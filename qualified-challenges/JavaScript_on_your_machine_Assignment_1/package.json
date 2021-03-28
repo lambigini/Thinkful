@@ -1,0 +1,26 @@
+{
+  "name": "javascript-on-your-machine",
+  "version": "1.0.0",
+  "description": "first assignment using npm,json",
+  "scripts": {
+    "start": "node ./src/solution.js",
+    "test": "mocha",
+    "build": "echo build done",
+    "docker:build": "docker image build . -t thinkful-ed/javascript-on-your-machine-assignment",
+    "docker:run": "docker run --rm -p 5000:5000 thinkful-ed/javascript-on-your-machine-assignment",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:test": "docker run --rm -it thinkful-ed/javascript-on-your-machine-assignment npm test",
+    "start:solution": "npm run docker:build && npm run docker:run",
+    "test:solution": "npm run docker:build && npm run docker:test"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
+  "keywords": [],
+  "author": "Harrison Tran",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
+}

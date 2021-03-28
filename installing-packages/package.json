@@ -1,0 +1,15 @@
+{
+  "name": "installing-packages",
+  "version": "1.0.0",
+  "description": "installing package from npm file",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}

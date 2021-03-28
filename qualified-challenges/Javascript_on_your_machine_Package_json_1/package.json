@@ -1,0 +1,10 @@
+{
+  "name": "package-json-practice",
+  "version": "1.0.0",
+  "description": "add value to description, author, and run with npm",
+  "scripts": {"start": "node main.js"},
+  "keywords": [],
+  "author": "Harrison",
+  "license": "ISC"
+  
+}
