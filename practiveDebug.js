@@ -1,17 +1,12 @@
-function openInstructions (weather, temperatureInCelsius) {
-if (weather && temperatureInCelsius) {
-  if (weather === "sunny") {
-  if (temperatureInCelsius > 20) {
-    return "Set up the patio and put out umbrellas. Open indoor windows.";
-  } else { return "Set up the patios, umbrellas optional. Open indoor windows."; }
-  } else if (weather === "rainy") {
-    if (temperatureInCelsius > 10) {
-      return "Open indoor windows slightly.";
-    } else { return "Keep windows closed." } }
-  }
- else {
-  return "Please set the `weather` and `temperatureInCelsius` variables.";
-}
-}
+const authors = [
+    "Ursula K. Le Guin",
+    "Brandon Sanderson",
+    "Terry Pratchett",
+    "Neil Gaiman",
+    "J. R. R. Tolkien",
+  ];
 
-openInstructions("sunny", 18);
+  const [first, second, third] = authors;
+  console.log(first);
+  console.log(second);
+  console.log(third);
