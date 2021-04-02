@@ -1,12 +1,6 @@
-const authors = [
-    "Ursula K. Le Guin",
-    "Brandon Sanderson",
-    "Terry Pratchett",
-    "Neil Gaiman",
-    "J. R. R. Tolkien",
-  ];
-
-  const [first, second, third] = authors;
-  console.log(first);
-  console.log(second);
-  console.log(third);
+let a = [10];
+let b =a;
+a.push(4);
+console.log(b);
+//console.log("harrison");
+console.log(a);
