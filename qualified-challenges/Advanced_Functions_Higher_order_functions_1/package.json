@@ -1,0 +1,23 @@
+{
+  "name": "zid-pf-advanced-functions-02-higher-order-functions",
+  "version": "1.0.0",
+  "description": "zid-pf-advanced-functions-02-higher-order-functions qualified challenge.",
+  "scripts": {
+    "docker:build": "docker image build . -t thinkful-ed/zid-pf-advanced-functions-02-higher-order-functions",
+    "docker:run": "docker run --rm -it -p 3000:3000 thinkful-ed/zid-pf-advanced-functions-02-higher-order-functions",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:test": "docker run -i thinkful-ed/zid-pf-advanced-functions-02-higher-order-functions npm test",
+    "start:solution": "npm run -it docker:build && npm run docker:run",
+    "test": "mocha test",
+    "test:solution": "npm run docker:build && npm run docker:test"
+  },
+  "keywords": [],
+  "author": "Thinkful.com",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0",
+    "sinon-chai": "^3.6.0"
+  }
+}

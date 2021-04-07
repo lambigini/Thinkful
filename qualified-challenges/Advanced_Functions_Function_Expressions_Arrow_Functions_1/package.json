@@ -1,0 +1,26 @@
+{
+  "name": "js_precourse_function_expressions_arrows",
+  "version": "1.0.0",
+  "description": "js_precourse_function_expressions_arrows qualified challenge.",
+  "main": "src/app.js",
+  "directories": {
+    "src": "src",
+    "doc": "docs"
+  },
+  "scripts": {
+    "docker:build": "docker image build . -t thinkful-ed/js_precourse_function_expressions_arrows",
+    "docker:run": "docker run --rm -it -p 3000:3000 thinkful-ed/js_precourse_function_expressions_arrows",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:test": "docker run -t  thinkful-ed/js_precourse_function_expressions_arrows npm test",
+    "start:solution": "npm run -it docker:build && npm run docker:run",
+    "test": "mocha test",
+    "test:solution": "npm run docker:build && npm run docker:test"
+  },
+  "keywords": [],
+  "author": "Thinkful.com",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2"
+  }
+}
