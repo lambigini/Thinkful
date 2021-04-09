@@ -1,0 +1,6 @@
+test/fixtures/authors.fixture.js
+test/main.test.js
+test/books.test.js
+test/fixtures/books.fixture.js
+test/fixtures/accounts.fixture.js
+test/accounts.test.js

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Local Libary - Admin Dashboard</title>
+  </head>
+
+  <body>
+    <header class="container-fluid bg-light border-bottom">
+      <nav class="row align-items-center">
+        <h1 class="h4 px-3">Local Library</h1>
+        <div class="col">
+          <ul class="nav py-3">
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html">Overall Stats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./books.html">Stats by Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./accounts.html">Stats by Account</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-4">
+      <section class="row">
+        <!-- General stats -->
+        <article class="mt-4 col-12 col-md">
+          <div class="card">
+            <h2 class="py-4 card-header">General Stats</h2>
+            <div class="card-body">
+              <p class="card-text">
+                There are
+                <span
+                  id="total-book-count"
+                  class="font-weight-bold text-primary"
+                  >0</span
+                >
+                total books at the library.
+              </p>
+              <p class="card-text">
+                There are
+                <span
+                  id="total-borrow-count"
+                  class="font-weight-bold text-primary"
+                  >0</span
+                >
+                books currently being borrowed.
+              </p>
+              <p class="card-text">
+                There are
+                <span
+                  id="total-accounts-count"
+                  class="font-weight-bold text-primary"
+                  >0</span
+                >
+                accounts registered with the library.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Most common genres -->
+        <article class="mt-4 col-12 col-md">
+          <div class="card">
+            <h2 class="py-4 card-header">Most Common Genres</h2>
+            <div class="card-body">
+              <p class="card-text">
+                Out of all of the books listed, the following genres are the
+                ones that occurred the most number of times.
+              </p>
+            </div>
+            <ul id="most-common-genres" class="list-group list-group-flush">
+              <li class="list-group-item">No genres listed.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="row">
+        <!-- Most popular books -->
+        <article class="mt-4 col-12 col-md">
+          <div class="card">
+            <h2 class="py-4 card-header">Most Popular Books</h2>
+            <div class="card-body">
+              <p class="card-text">
+                Out of all of the books listed, the following are the most
+                popular. This number is generated based on the number of times a
+                book has been taken out.
+              </p>
+            </div>
+            <ul id="most-popular-books" class="list-group list-group-flush">
+              <li class="list-group-item">No books listed.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Most popular authors -->
+        <article class="mt-4 col-12 col-md">
+          <div class="card">
+            <h2 class="py-4 card-header">Most Popular Authors</h2>
+            <div class="card-body">
+              <p class="card-text">
+                Out of all of the books listed, the following authors are the
+                most popular. This number is generated based on the number of
+                times an author's book has been taken out.
+              </p>
+            </div>
+            <ul id="most-popular-authors" class="list-group list-group-flush">
+              <li class="list-group-item">No authors listed.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./data/accounts.js"></script>
+    <script src="./data/authors.js"></script>
+    <script src="./data/books.js"></script>
+    <script src="./setup.js"></script>
+    <script src="./src/home.js"></script>
+    <script src="./renderers/home.js"></script>
+  </body>
+</html>

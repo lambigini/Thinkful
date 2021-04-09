@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Local Libary - Admin Dashboard - Books</title>
+  </head>
+
+  <body>
+    <header class="container-fluid bg-light border-bottom">
+      <nav class="row align-items-center">
+        <h1 class="h4 px-3">Local Library</h1>
+        <div class="col">
+          <ul class="nav py-3">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Overall Stats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./books.html">Stats by Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./accounts.html">Stats by Account</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-4">
+      <section class="row">
+        <nav class="col-5" style="max-height: 85vh">
+          <div class="card mh-100 overflow-auto">
+            <div class="card-header">Books</div>
+            <ul id="books-list" class="list-group list-group-flush">
+              <li class="list-group-item">No books found...</li>
+            </ul>
+          </div>
+        </nav>
+        <article id="book-selection" class="col-7"></article>
+      </section>
+    </main>
+
+    <script src="./data/accounts.js"></script>
+    <script src="./data/authors.js"></script>
+    <script src="./data/books.js"></script>
+    <script src="./setup.js"></script>
+    <script src="./src/books.js"></script>
+    <script src="./renderers/books.js"></script>
+  </body>
+</html>
