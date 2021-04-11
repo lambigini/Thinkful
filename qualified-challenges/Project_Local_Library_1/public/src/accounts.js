@@ -36,7 +36,7 @@ function getBooksPossessedByAccount(account, books, authors) {
         authors.forEach((authorElement) => {
           if (authorElement.id === bookElement.authorId){
             // add new key:value author: author value to book element
-             bookElement.author = authorElement;           
+             bookElement["author"] = authorElement; 
           }
         });
    // push the book element to the empty array
