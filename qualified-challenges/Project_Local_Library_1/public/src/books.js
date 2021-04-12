@@ -38,7 +38,7 @@ return acc;
  } ,[])
 
 //return array
-return result;
+return result.slice(0,10);
 }
 
 module.exports = {
