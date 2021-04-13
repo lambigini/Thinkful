@@ -66,8 +66,6 @@ function getMostPopularBooks(books) {
   return mostPopularBooks.slice(0, 5);
 }
 
-
-
 function getMostPopularAuthors(books, authors) {
   const booksModule = require("./books.js");
   // get all the books from same author
@@ -75,18 +73,18 @@ function getMostPopularAuthors(books, authors) {
     //const author = authors.find((author) => author.id === book.authorId);
     const author = booksModule.findAuthorById(authors, book.authorId);
 
-
     // get number of book of borrowd
-    const authorName = author.name.first + " " + author.name.last;
+    const name = author.name.first + " " + author.name.last;
     const count = book.borrows.length;
 
     // check if author name exist in empty array, add the number of borrowed book to the existing count number
-    let found = acc.find((accElement) => accElement.name === authorName);
+    let found = acc.find((accElement) => accElement.name === name);
+
     if (found) found.count += book.borrows.length;
     else {
       // go to book, go to author id
       // push it to the empty array
-      acc.push({ name: authorName, count });
+      acc.push({ name, count });
     }
 
     return acc;
