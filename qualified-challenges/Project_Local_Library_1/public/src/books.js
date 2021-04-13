@@ -13,6 +13,11 @@ function partitionBooksByBorrowedStatus(books) {
   const returnedBooks = books.filter((book) => {
     return book.borrows.every((returnStatus) => returnStatus.returned);
   });
+
+  // const returnedBooks = books.map((book) => {
+  //   return book.borrows.every((returnStatus) => returnStatus.returned);
+  // });
+
 //filter book not return yet
   const notReturnedBooks = books.filter((book) => {
     return book.borrows.some((returnStatus) => !returnStatus.returned);
@@ -36,6 +41,8 @@ function getBorrowersForBook(book, accounts) {
 
 return acc;
  } ,[])
+
+
 
 //return array
 return result.slice(0,10);

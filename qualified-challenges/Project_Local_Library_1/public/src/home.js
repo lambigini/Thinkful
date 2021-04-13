@@ -66,24 +66,16 @@ function getMostPopularBooks(books) {
   return mostPopularBooks.slice(0, 5);
 }
 
-// const {
-//   getFindAuthorById,
-//   getFindBookById,
-//   getPartitionBooksByBorrowedStatus,
-//   getgetBorrowersForBook,
-// }= require("./books.js");
-
-// const author1 = getFindAuthorById(authors, 8);
-// console.log("author1 " + author1);
 
 
 function getMostPopularAuthors(books, authors) {
-    
-
-
+  const booksModule = require("./books.js");
   // get all the books from same author
   const result = books.reduce((acc, book) => {
-    const author = authors.find((author) => author.id === book.authorId);
+    //const author = authors.find((author) => author.id === book.authorId);
+    const author = booksModule.findAuthorById(authors, book.authorId);
+
+
     // get number of book of borrowd
     const authorName = author.name.first + " " + author.name.last;
     const count = book.borrows.length;
