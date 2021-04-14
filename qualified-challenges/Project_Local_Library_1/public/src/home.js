@@ -1,3 +1,4 @@
+
 function getTotalBooksCount(books) {
 
   let count = books.reduce((acc, book) => {
@@ -52,13 +53,13 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
-  const mostPopularBooks = books.reduce((acc, book) => {
+
+let mostPopularBooks = books.map(book => {
     const count = book.borrows.length;
     const name = book.title;
     // push it to empty array
-    acc.push({ name, count });
-    return acc;
-  }, []);
+    return {count, name};
+  })
 
   // sort by highest to lowest
   mostPopularBooks.sort((a, b) => b.count - a.count);
@@ -67,6 +68,7 @@ function getMostPopularBooks(books) {
 }
 
 function getMostPopularAuthors(books, authors) {
+
   const booksModule = require("./books.js");
   // get all the books from same author
   const result = books.reduce((acc, book) => {
