@@ -1,3 +1,4 @@
+
 function getTotalBooksCount(books) {
 
   let count = books.reduce((acc, book) => {
@@ -52,13 +53,13 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
-  const mostPopularBooks = books.reduce((acc, book) => {
+
+let mostPopularBooks = books.map(book => {
     const count = book.borrows.length;
     const name = book.title;
     // push it to empty array
-    acc.push({ name, count });
-    return acc;
-  }, []);
+    return {count, name};
+  })
 
   // sort by highest to lowest
   mostPopularBooks.sort((a, b) => b.count - a.count);
@@ -66,35 +67,26 @@ function getMostPopularBooks(books) {
   return mostPopularBooks.slice(0, 5);
 }
 
-// const {
-//   getFindAuthorById,
-//   getFindBookById,
-//   getPartitionBooksByBorrowedStatus,
-//   getgetBorrowersForBook,
-// }= require("./books.js");
-
-// const author1 = getFindAuthorById(authors, 8);
-// console.log("author1 " + author1);
-
-
 function getMostPopularAuthors(books, authors) {
-    
 
-
+  const booksModule = require("./books.js");
   // get all the books from same author
   const result = books.reduce((acc, book) => {
-    const author = authors.find((author) => author.id === book.authorId);
+    //const author = authors.find((author) => author.id === book.authorId);
+    const author = booksModule.findAuthorById(authors, book.authorId);
+
     // get number of book of borrowd
-    const authorName = author.name.first + " " + author.name.last;
+    const name = author.name.first + " " + author.name.last;
     const count = book.borrows.length;
 
     // check if author name exist in empty array, add the number of borrowed book to the existing count number
-    let found = acc.find((accElement) => accElement.name === authorName);
+    let found = acc.find((accElement) => accElement.name === name);
+
     if (found) found.count += book.borrows.length;
     else {
       // go to book, go to author id
       // push it to the empty array
-      acc.push({ name: authorName, count });
+      acc.push({ name, count });
     }
 
     return acc;
