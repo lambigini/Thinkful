@@ -4,16 +4,18 @@
   "description": "## Existing files",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "nyc --reporter=text mocha tests"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.0.1"
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
   },
   "directories": {
     "test": "tests"
   }
+  
 }
