@@ -1,0 +1,22 @@
+{
+  "name": "zid-pf-testing-basics-02-unit-testing-with-mocha-chai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/solution.js",
+  "scripts": {
+    "docker:build": "docker image build . -t thinkful-ed/zid-pf-testing-basics-02-unit-testing-with-mocha-chai",
+    "docker:run": "docker run --rm -it -p 3000:3000 thinkful-ed/zid-pf-testing-basics-02-unit-testing-with-mocha-chai",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:test": "docker run -i thinkful-ed/zid-pf-testing-basics-02-unit-testing-with-mocha-chai npm test",
+    "start:solution": "npm run -it docker:build && npm run docker:run",
+    "test": "mocha test",
+    "test:solution": "npm run docker:build && npm run docker:test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2"
+  }
+}
