@@ -7,38 +7,63 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
 
   function caesar(input, shift, encode = true) {
-    
-   // check for out of range shift
+    // check for out of range shift
     if (!shift || shift === 0 || shift < -25 || shift > 25) return false;
-    
+
     //convert all to lowercase
     const inputLowerCase = input.toLowerCase();
-    
-    let message = "";
-     // if encode not true, then decode
+
+    //let message = "";
+    // if encode not true, then decode
     if (!encode) shift = 26 - shift;
 
+    // [...inputLowerCase].forEach((char) => {
+    //   // convert only if character from input is from a--->z
+    //   if ("a" <= char && char <= "z") {
+    //     let ch;
+    //     // shift left, modular of 26
+    //     if (shift < 0)
+    //       ch = String.fromCharCode(
+    //         ((char.charCodeAt(0) + shift - 122) % 26) + 122
+    //       );
+    //     // shift right, modular of 26
+    //     else
+    //       ch = String.fromCharCode(
+    //         ((char.charCodeAt(0) + shift - 97) % 26) + 97
+    //       );
 
-    for (let index = 0; index < inputLowerCase.length; index++) {
-      let char = inputLowerCase[index];
-      
-      // convert only if character from input is from a--->z
-      if ( "a" <= char && char <= "z" ) {
+    //     message += ch;
+    //   } else {
+    //     // keep the same character
+    //     message += char;
+    //   }
+    // });
+
+
+  const message =  [...inputLowerCase].reduce( (acc, char) => {
+      if ("a" <= char && char <= "z") { // perform action if character from a->z
         let ch;
         // shift left, modular of 26
-        if (shift < 0) ch = String.fromCharCode((char.charCodeAt(0) + shift - 122) % 26 + 122 );
+        if (shift < 0)
+          ch = String.fromCharCode(
+            ((char.charCodeAt(0) + shift - 122) % 26) + 122
+          );
         // shift right, modular of 26
-        else ch = String.fromCharCode((char.charCodeAt(0) + shift - 97) % 26 + 97);
-        message += ch;
-      } else { // keep the same character
-        message += char;
+        else
+          ch = String.fromCharCode(
+            ((char.charCodeAt(0) + shift - 97) % 26) + 97
+          );
+
+      return  acc += ch;
+      } else {
+        // keep the same character
+       return acc += char;
       }
-      
-    }
-    
+    } , "")
+
     return message;
   }
-  
+
   return {
     caesar,
   };
