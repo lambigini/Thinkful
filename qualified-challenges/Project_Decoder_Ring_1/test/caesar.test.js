@@ -3,7 +3,7 @@ const { expect } = require("chai");
 const { caesar } = require("../src/caesar");
 
 describe("caesar", () => {
-  it("If the shift value is not present,equal to 0,less than -25,greater than 25, the function should return false", () => {
+  it("If the shift value is not present", () => {
     const input = "thinkful";
     
 
@@ -42,5 +42,44 @@ describe("caesar", () => {
     expect(actual).to.equal(expected);
   });
 
+
+
+  it("Spaces should be maintained throughout, as should other non-alphabetic symbols.", () => {
+    const input = "thinkful th@$";
+    const shift = 3;
+
+    const expected = "wklqnixo wk@$";
+    const actual = caesar(input, shift);
+    expect(actual).to.equal(expected);
+  });
+
+  // convert capital letter to lower case
+  it("Capital letters can be ignored", () => {
+const input = "This is a secret message!";
+const shift = 8;
+
+const expected = "bpqa qa i amkzmb umaaiom!";
+const actual = caesar(input, shift);
+expect(actual).to.equal(expected);
+  });
+
+  // decoder test
+  it("decode cypher test", () => {
+    const input = "BPQA qa I amkzmb umaaiom!";
+    const shift = 8;
+    
+    const expected = "this is a secret message!";
+    const actual = caesar(input, shift, false);
+    expect(actual).to.equal(expected);
+      });
+
+      it("should allow for a negative shift that will shift to the left", () => {
+        const input = "zebra magazine";
+        const shift = -3;
+        
+        const expected = "wbyox jxdxwfkb";
+        const actual = caesar(input, shift);
+        expect(actual).to.equal(expected);
+          });
 
 });

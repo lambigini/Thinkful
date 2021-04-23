@@ -7,53 +7,37 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
 
   function caesar(input, shift, encode = true) {
-    // your solution code here
-    // check if encode if true or not
+    
+   // check for out of range shift
     if (!shift || shift === 0 || shift < -25 || shift > 25) return false;
     
+    //convert all to lowercase
     const inputLowerCase = input.toLowerCase();
-    console.log(`inputLowerCase ${inputLowerCase}`);
+    
     let message = "";
-    
-    // if true
-    if (encode) {
-      // go to each character of input
-     
-for (let index = 0; index < inputLowerCase.length; index++) {
-  // ignore the space
-  if (inputLowerCase.charCodeAt(index) === 32) continue;
+     // if encode not true, then decode
+    if (!encode) shift = 26 - shift;
 
-  else if (inputLowerCase.charCodeAt(index) + shift > 122) {
-    const character = 96 + (inputLowerCase.charCodeAt(index) -122);
-  }
-  else {
-    const character = inputLowerCase.charCodeAt(index) + shift;
-  }
-  message += String.fromCharCode(character);
-}  
-    } else  {
-        //if false
-          // go to each character of input
-           if (inputLowerCase.charCodeAt(index) === 32) continue;
-  
-  else if (inputLowerCase.charCodeAt(index) - shift < 97) {
-    const character = 123 - (inputLowerCase.charCodeAt(index) -97);
-  }
-  else {
-    const character = inputLowerCase.charCodeAt(index) - shift;
-  }
-             message += String.fromCharCode(character);
-           }
-          
-    } 
-  
-  }
+
+    for (let index = 0; index < inputLowerCase.length; index++) {
+      let char = inputLowerCase[index];
+      
+      // convert only if character from input is from a--->z
+      if ( "a" <= char && char <= "z" ) {
+        let ch;
+        // shift left, modular of 26
+        if (shift < 0) ch = String.fromCharCode((char.charCodeAt(0) + shift - 122) % 26 + 122 );
+        // shift right, modular of 26
+        else ch = String.fromCharCode((char.charCodeAt(0) + shift - 97) % 26 + 97);
+        message += ch;
+      } else { // keep the same character
+        message += char;
+      }
+      
+    }
     
-    console.log(`message ${message}`);
-    // return decode/endcode message input or output
     return message;
   }
-
   
   return {
     caesar,
