@@ -57,5 +57,35 @@ describe("substitution", () => {
 
   });
 
+  it("should decode a message by using the given substitution alphabet", () => {
+    const input = "jrufscpw";
+    const alphabet = "xoyqmcgrukswaflnthdjpzibev";
+
+    const actual = substitution(input, alphabet, false);
+    const expected = 'thinkful';
+    expect(actual).to.equal(expected);
+
+  });
+
+
+  it("should work with any kind of key with unique characters", () => {
+    const input = "y&ii$r&";
+    const alphabet = "$wae&zrdxtfcygvuhbijnokmpl";
+
+    const actual = substitution(input, alphabet, false);
+    const expected = "message";
+    expect(actual).to.equal(expected);
+
+  });
+
+  it("should preserve spaces", () => {
+    const input = "y&ii$r& y";
+    const alphabet = "$wae&zrdxtfcygvuhbijnokmpl";
+
+    const actual = substitution(input, alphabet, false);
+    const expected = "message m";
+    expect(actual).to.equal(expected);
+
+  });
 
 });

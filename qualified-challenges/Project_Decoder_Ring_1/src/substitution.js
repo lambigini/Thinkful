@@ -17,42 +17,51 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     // your solution code here
-    if (!alphabet || alphabet.length !== 26 || !is_unique(alphabet) ) return false;
+    if (!alphabet || alphabet.length !== 26 || !is_unique(alphabet))
+      return false;
     // encode
     // get the index of each input in ascii
-let result = "";
-const inputLowerCase = input.toLowerCase();
+    let result = "";
+    const inputLowerCase = input.toLowerCase();
 
-    for (let index = 0; index < inputLowerCase.length; index++) {
-      const element = inputLowerCase[index];
+    if (!encode) {
+      for (let index = 0; index < inputLowerCase.length; index++) {
+        const element = inputLowerCase[index];
 
-      if (element.charCodeAt(0) !== 32 ) {
-        const indexElement = element.charCodeAt(0) - 97 ;
-        console.log(`indexElement: ${indexElement}`);
-        // match the index of to apphabet
-        const match = alphabet.charAt(indexElement);
-        console.log(`match: ${match}`);
-        // add character together
-      result += match;
-      } else {
-        result += " ";
+        if (element.charCodeAt(0) !== 32) {
+          // find character from input match with character in alphabet, get the index
+
+          let index = alphabet.search(element);
+
+          //  match that index with ascii table
+          if (index === 26) index = index - 26;
+          const match = String.fromCharCode(index + 97);
+
+          // add the result
+          result += match;
+        } else {
+          result += " ";
+        }
       }
-      
+    } else {
+      for (let index = 0; index < inputLowerCase.length; index++) {
+        const element = inputLowerCase[index];
 
-     
+        if (element.charCodeAt(0) !== 32) {
+          const indexElement = element.charCodeAt(0) - 97;
 
-    
-      
+          // match the index of to apphabet
+          const match = alphabet.charAt(indexElement);
+
+          // add character together
+          result += match;
+        } else {
+          result += " ";
+        }
+      }
     }
-    
+
     return result;
-    
-    console.log(`result: ${result}`);
-    console.log(`inputLowerCase: ${inputLowerCase}`);
-
-
-
-
   }
 
   return {
