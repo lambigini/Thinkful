@@ -14,25 +14,41 @@ const polybiusModule = (function () {
     let row, col;
     // loop through each character of the input
     for (let index = 0; index < inputLowerCase.length; index++) {
-      const character = inputLowerCase[index];
+      const character = inputLowerCase.charCodeAt(index);
       console.log(`character: ${character}`)
+      if(character !== 32) {
 
       // get the row of the table
-       col =parseInt(Math.ceil((character.charCodeAt(0) - 97) /5))+1   ;
-       row = ((character.charCodeAt(0) - 97) % 5) +1;
-
-// if the letter is (i/j) assign number 42 to it
-       if (character === 'i' || character === 'j' ) {
-         col = 2;
-         row = 4;
-       } 
-
+       row = parseInt((inputLowerCase.charCodeAt(index) - 97) /5) +1   ;
       console.log(`row: ${row}`);
-      console.log(`col: ${col}`)
-      result += (row+ "" + col + " ");
       
-      console.log(`result: ${result}`)
-    }
+       col = ((inputLowerCase.charCodeAt(index) - 97) % 5) + 1;
+       console.log(`col: ${col}`)
+
+       if (character === 107) 
+            {
+                row = row - 1;
+                col = 5 - col + 1;
+            }
+          
+            // if character is greater than 'j'
+        else if (character >= 106)
+        {
+            if (col === 1) 
+            {
+                col = 6;
+                row = row - 1;
+            }
+            col = col - 1;
+        }
+       console.log(`row: ${row}`);
+      console.log(`col: ${col}`)
+      result += (col+ "" + row);
+      } else {
+          result += ' ';
+      }
+      
+     }
     
     console.log(`result final: ${result}`)
     return result;
