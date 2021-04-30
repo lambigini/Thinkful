@@ -29,13 +29,10 @@ const polybiusModule = (function () {
       let letter = "";
 
       for (let index = 0; index < inputLowerCase.length; index += 2) {
-        console.log(`inside polybius function`);
         // get the col and row
         col = inputLowerCase[index];
-        console.log(`col: ${col}`);
 
         row = inputLowerCase[index + 1];
-        console.log(`row: ${row}`);
 
         if (inputLowerCase.charCodeAt(index) !== 32) {
           // get the aphabet
@@ -43,7 +40,7 @@ const polybiusModule = (function () {
             for (let j = 0; j < decodeTable.length; j++) {
               if (row - 1 === i && col - 1 === j) {
                 letter = decodeTable[i][j];
-                console.log(`letter: ${letter}`);
+
                 continue;
               }
             }
@@ -80,8 +77,8 @@ const polybiusModule = (function () {
             }
             col = col - 1;
           }
-          console.log(`row: ${row}`);
-          console.log(`col: ${col}`);
+          // console.log(`row: ${row}`);
+          // console.log(`col: ${col}`);
           result += col + "" + row;
         } else {
           result += " ";
@@ -89,7 +86,6 @@ const polybiusModule = (function () {
       }
     }
 
-    console.log(`result final: ${result}`);
     return result;
   }
 
