@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "../intro-to-flexbox"
+		},
+		{
+			"path": "../deeper-with-flexbox"
+		},
+		{
+			"path": "../html-forms"
+		},
+		{
+			"path": "../intro-to-media-queries"
+		},
+		{
+			"path": "../mobile-first-development"
+		},
+		{
+			"path": "../navigation"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "responsive-images"
+	}
+}
