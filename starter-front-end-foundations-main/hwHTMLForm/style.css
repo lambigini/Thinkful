@@ -1,0 +1,13 @@
+form {
+  width: 900px;
+}
+
+label {
+  display: block;
+}
+
+label,
+input,
+textarea {
+  width: 100%;
+}
