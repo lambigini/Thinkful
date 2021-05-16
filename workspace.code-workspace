@@ -1,7 +1,19 @@
 {
-	"folders": [
-		{
-			"path": "starter-front-end-foundations-main"
-		}
-	]
+  "folders": [
+    {
+      "path": "starter-front-end-foundations-main"
+    },
+    {
+      "path": "../starter-thinkfulbnb-main"
+    },
+    {
+      "path": "CSS-Frameworks"
+    },
+    {
+      "path": "qualified-challenges"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "qualified-challenges"
+  }
 }
