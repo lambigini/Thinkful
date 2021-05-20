@@ -7,13 +7,10 @@
       "path": "../starter-thinkfulbnb-main"
     },
     {
-      "path": "CSS-Frameworks"
-    },
-    {
-      "path": "qualified-challenges"
+      "path": "."
     }
   ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "qualified-challenges"
+    "liveServer.settings.multiRootWorkspaceName": "Thinkful"
   }
 }
