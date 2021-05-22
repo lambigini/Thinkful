@@ -41,6 +41,25 @@ Add event listeners to the .highlightBtn buttons
 */
 function highlightArticle() {
   // your code here
+  const highlightBtns = document.querySelectorAll(".highlightBtn");
+
+  highlightBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const article = btn.closest("article");
+
+      const highlightBody = article.querySelector(".article_body");
+
+      if (btn.innerText === "+") {
+        highlightBody.classList.add("highlight");
+
+        btn.innerText = "-";
+      } else {
+        highlightBody.classList.remove("highlight");
+
+        btn.innerText = "+";
+      }
+    });
+  });
 }
 
 function main() {
