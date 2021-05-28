@@ -8,9 +8,15 @@
     },
     {
       "path": "."
+    },
+    {
+      "path": "../getting-started-with-react"
+    },
+    {
+      "path": "../introduction-to-JSX"
     }
   ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "Thinkful"
+    "liveServer.settings.multiRootWorkspaceName": "getting-started-with-react"
   }
 }

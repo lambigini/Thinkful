@@ -5,4 +5,5 @@ axios.get(url).then((response) => {
   console.log(response.status);
   console.log(response.statusText);
   console.log(response.data);
+  // console.log(response);
 });
