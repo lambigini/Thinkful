@@ -1,0 +1,4 @@
+__mocks__/styleMock.js
+__mocks__/fileMocks.js
+jest.config.js
+src/__tests__/App.test.js
