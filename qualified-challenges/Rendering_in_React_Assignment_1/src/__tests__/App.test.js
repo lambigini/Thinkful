@@ -9,7 +9,13 @@ import HobbyList from "../HobbyList";
 afterEach(cleanup);
 
 test("Image is present in the Header component", () => {
-  const { container } = render(<Header imageSrc={"https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"} />);
+  const { container } = render(
+    <Header
+      imageSrc={
+        "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
+      }
+    />
+  );
   const element = container.querySelector("img");
   expect(element).toBeTruthy();
   expect(element.src).toBe(
@@ -18,27 +24,27 @@ test("Image is present in the Header component", () => {
 });
 
 test("Name is present in the Header component", () => {
-  const { getByText } = render(<Header name={"Kitty Kat"}/>);
+  const { getByText } = render(<Header name={"Kitty Kat"} />);
   const element = getByText("Kitty Kat");
   expect(element).toBeTruthy();
 });
 
 test("Birthday is present in the Header component", () => {
-  const { getByText } = render(<Header birthday={"January 1"}/>);
+  const { getByText } = render(<Header birthday={"January 1"} />);
   const element = getByText(/January 1/);
   expect(element).toBeTruthy();
 });
 
 test("Hobbies label is present in the HobbyList component", () => {
   const hobbies = ["watching birds", "hiding in a box", "napping"];
-  const { getByText } = render(<HobbyList hobbies={hobbies}/>);
+  const { getByText } = render(<HobbyList hobbies={hobbies} />);
   const element = getByText("Hobbies");
   expect(element).toBeTruthy();
 });
 
 test("Hobbies are present in the HobbyList component", () => {
   const hobbies = ["watching birds", "hiding in a box", "napping"];
-  const { getByText } = render(<HobbyList hobbies={hobbies}/>);
+  const { getByText } = render(<HobbyList hobbies={hobbies} />);
   hobbies.forEach((hobby) => {
     const element = getByText(hobby);
     expect(element).toBeTruthy();
@@ -47,9 +53,9 @@ test("Hobbies are present in the HobbyList component", () => {
 
 test("Hobbies does not appear when hobbies list is empty", () => {
   const hobbies = [];
-  const { container } = render(<HobbyList hobbies={hobbies}/>);
+  const { container } = render(<HobbyList hobbies={hobbies} />);
   expect(container.textContent).not.toContain("Hobbies");
-})
+});
 
 test("Daily activities are present in the ActivityList component", () => {
   const activities = [
@@ -62,9 +68,9 @@ test("Daily activities are present in the ActivityList component", () => {
     { time: "7:00 pm", description: "play" },
     { time: "10:00 pm", description: "bedtime" },
   ];
-  
+
   const { getByText } = render(<ActivityList activities={activities} />);
-  
+  console.log(`getByText   ${getByText}`);
   activities.forEach((activity) => {
     const time = getByText(activity.time);
     const description = getByText(activity.description);
