@@ -104,7 +104,7 @@ function Pomodoro() {
       }
       return setSession(nextTick);
     },
-    isTimerRunning ? 1000 : null
+    isTimerRunning ? 100 : null
   );
 
   /**
@@ -152,7 +152,15 @@ function Pomodoro() {
         handleStopButton={handleStopButton}
         session={session}
       />
-      {showLabel ? <ProgressLabel session={session} /> : null}
+      {showLabel ? (
+        <ProgressLabel
+          session={session}
+          focusDuration={focusDuration}
+          breakDuration={breakDuration}
+          minutesToDuration={minutesToDuration}
+          secondsToDuration={secondsToDuration}
+        />
+      ) : null}
     </div>
   );
 }
