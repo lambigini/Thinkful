@@ -6,14 +6,21 @@ function ProgressLabel({
   breakDuration,
   minutesToDuration,
   secondsToDuration,
+  isTimerRunning,
+  showLabel,
 }) {
   const progressWidth =
     session.label === "Focusing"
-      ? (focusDuration * 60 - session.timeRemaining) /
+      ? parseInt(focusDuration * 60 - session.timeRemaining) /
         ((focusDuration * 60) / 100)
-      : (breakDuration * 60 - session.timeRemaining) /
+      : parseInt(breakDuration * 60 - session.timeRemaining) /
         ((breakDuration * 60) / 100);
 
+  // console.log(
+  //   `${session.label} for focus ${focusDuration} break ${breakDuration} `
+  // );
+
+  // console.log(`progressWidth ${progressWidth} `);
   return (
     <div>
       {/* TODO: This area should show only when there is an active focus or break - i.e. the session is running or is paused */}
@@ -34,6 +41,7 @@ function ProgressLabel({
               : secondsToDuration(session.timeRemaining)}{" "}
             remaining
           </p>
+          {!isTimerRunning && showLabel ? <h2>PAUSED</h2> : null}
         </div>
       </div>
       <div className="row mb-2">

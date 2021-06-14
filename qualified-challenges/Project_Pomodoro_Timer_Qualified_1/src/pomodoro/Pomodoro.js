@@ -64,22 +64,18 @@ function Pomodoro() {
   const [showLabel, setShowLabel] = useState(false);
 
   const handleDecreaseFocus = (event) => {
-    console.log(`focusDuration ${focusDuration}`);
     return setfocusDuration((currentFocus) => Math.max(5, currentFocus - 5));
   };
 
   const handleIncreseFocus = (event) => {
-    console.log(`focusDuration ${focusDuration}`);
     return setfocusDuration((currentFocus) => Math.min(60, currentFocus + 5));
   };
 
   const handleDecreaseBreak = (event) => {
-    console.log(`breakDuration ${breakDuration}`);
     return setbreakDuration((currentBreak) => Math.max(1, currentBreak - 1));
   };
 
   const handleIncreseBreak = (event) => {
-    console.log(`breakDuration ${breakDuration}`);
     return setbreakDuration((currentBreak) => Math.min(15, currentBreak + 1));
   };
 
@@ -104,7 +100,7 @@ function Pomodoro() {
       }
       return setSession(nextTick);
     },
-    isTimerRunning ? 100 : null
+    isTimerRunning ? 1000 : null
   );
 
   /**
@@ -159,6 +155,8 @@ function Pomodoro() {
           breakDuration={breakDuration}
           minutesToDuration={minutesToDuration}
           secondsToDuration={secondsToDuration}
+          isTimerRunning={isTimerRunning}
+          showLabel={showLabel}
         />
       ) : null}
     </div>
