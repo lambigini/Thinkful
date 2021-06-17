@@ -81,10 +81,10 @@ function Pomodoro() {
 
   const handleStopButton = () => {
     console.log(" stop button clicked");
-    setSession(null);
-    setIsTimerRunning(false);
-    setfocusDuration(25);
-    setbreakDuration(5);
+    setSession((current) => (current = null));
+    setIsTimerRunning((current) => (current = false));
+    setfocusDuration((current) => (current = 25));
+    setbreakDuration((current) => (current = 5));
     setShowLabel((currentValue) => (currentValue = false));
   };
   /**
