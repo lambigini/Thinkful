@@ -8,12 +8,9 @@ export const UserPost = ({ posts = [] }) => {
     throw new Error("No URL parameter for postId");
   }
 
-  const post = posts.find((post) => `${post.id}` === postId);
-
   return (
     <article>
       <h3>{post.title}</h3>
-      <p>{post.body}</p>
     </article>
   );
 };
