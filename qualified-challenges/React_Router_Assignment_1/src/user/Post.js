@@ -1,16 +1,14 @@
 import React from "react";
-import { Route, useHistory, useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 import { deletePost } from "../api";
-import Home from "./Home";
 
 import NoPostSelectedMessage from "./NoPostSelectedMessage";
 
 export const Post = ({ posts }) => {
   const { postId } = useParams(); // TODO: This ID will need to be pulled from parameters.
-  const history = useHistory();
-
   const post = posts.find((post) => post.id === Number(postId));
+  const history = useHistory();
 
   const handleDelete = async (id) => {
     const result = window.confirm("Are you sure you want to delete this post?");

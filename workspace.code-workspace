@@ -17,6 +17,12 @@
     },
     {
       "path": "../router-exercise-app-nested-routes"
+    },
+    {
+      "path": "../starter-constellations-client-master"
+    },
+    {
+      "path": "../starter-constellations-server-master"
     }
   ],
   "settings": {

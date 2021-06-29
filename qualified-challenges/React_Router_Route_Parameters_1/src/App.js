@@ -12,7 +12,7 @@ function App() {
   }
 
   function NoMatch() {
-    return <p>404 Not Found</p>;
+    return <h4>404 Not Found</h4>;
   }
 
   return (

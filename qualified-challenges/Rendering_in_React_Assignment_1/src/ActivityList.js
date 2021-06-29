@@ -17,7 +17,7 @@ function ActivityList({ activities }) {
   return (
     activities.length > 0 && (
       <div className="list">
-        <ul>{activityList}</ul>
+        <li>{activityList}</li>
       </div>
     )
   );

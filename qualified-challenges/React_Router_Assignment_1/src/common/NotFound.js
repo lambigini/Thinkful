@@ -9,6 +9,7 @@ export const NotFound = () => (
   <main className="container">
     <p>Page not found!</p>
     <p>
+      {/* <a>Return Home</a> */}
       <Link to="/">Return Home</Link>
     </p>
   </main>

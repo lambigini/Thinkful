@@ -4,24 +4,20 @@ import { fetchUserWithPosts } from "../api";
 import PostList from "./PostList";
 import PostsNav from "./PostsNav";
 import ErrorMessage from "../common/ErrorMessage";
-// import { Route } from "react-router";
-
 import {
-  Link,
   NavLink,
   Route,
   Switch,
   useParams,
   useRouteMatch,
+  Link,
 } from "react-router-dom";
-import Home from "./Home";
 
 export const User = () => {
   const [user, setUser] = useState({ posts: [] });
   const [error, setError] = useState(undefined);
   const { userId } = useParams(); // TODO: This ID will need to be pulled from parameters.
   const { url } = useRouteMatch();
-
   useEffect(() => {
     const abortController = new AbortController();
     fetchUserWithPosts(userId, abortController.signal)
@@ -38,7 +34,7 @@ export const User = () => {
       <ErrorMessage error={error}>
         <p>
           {/* <a>Return Home</a> */}
-          <NavLink to="/">Return Home</NavLink>
+          <Link to="/">Return Home</Link>
         </p>
       </ErrorMessage>
     );
@@ -63,8 +59,8 @@ export const User = () => {
         <ul className="nav nav-tabs">
           <li className="nav-item">
             {/* <a className="nav-link">Profile</a> */}
-            <NavLink to={`${url}`} className="nav-link">
-              Profile
+            <NavLink exact to={`${url}`} className="nav-link">
+              Profile{" "}
             </NavLink>
           </li>
           <li className="nav-item">
@@ -78,15 +74,16 @@ export const User = () => {
         {user.id ? (
           <div className="p-4 border border-top-0">
             <Switch>
-              <Route exact path={`${url}/`}>
+              {/* <Route exact path="/users/:userId"> */}
+              <Route exact path={`${url}`}>
                 <UserProfile user={user} />
               </Route>
+
+              {/* <Route path="/users/:userId/posts"> */}
               <Route path={`${url}/posts`}>
                 <PostList posts={user.posts} />
               </Route>
             </Switch>
-            {/* <PostList posts={user.posts} />
-            <UserProfile user={user} /> */}
           </div>
         ) : (
           <div className="p-4 border border-top-0">
