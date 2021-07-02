@@ -1,22 +1,20 @@
 import React from "react";
-
-function Desk() {
+import { Link, Route, Switch } from "react-router-dom";
+function Desk({ desk }) {
   return (
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <button type="button" class="btn btn-secondary">
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">{desk.name}</h5>
+        <p>{desk.cards.length} cards</p>
+        <p className="card-text">{desk.description}</p>
+        <Link to={`/decks/${desk.id}`} className="btn btn-secondary">
           View
-        </button>
-        <button type="button" class="btn btn-primary">
+        </Link>
+
+        <Link to={`/decks/${desk.id}/study`} className="btn btn-primary">
           Study
-        </button>
-        <button type="button" class="btn btn-danger">
-          Delete
-        </button>
+        </Link>
+        <Link className="btn btn-danger">Delete</Link>
       </div>
     </div>
   );

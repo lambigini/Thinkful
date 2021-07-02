@@ -17,7 +17,7 @@ function Layout() {
     // console.log("listDesks", listDesks);
   }, []);
 
-  console.log("listDesks", listDesks);
+  // console.log("listDesks", listDesks);
   return (
     <>
       <Header />
