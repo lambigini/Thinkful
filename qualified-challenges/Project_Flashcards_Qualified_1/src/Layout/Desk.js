@@ -12,6 +12,7 @@ function Desk({ desk }) {
         </Link>
 
         <Link to={`/decks/${desk.id}/study`} className="btn btn-primary">
+          {console.log("desk", desk)}
           Study
         </Link>
         <Link className="btn btn-danger">Delete</Link>
