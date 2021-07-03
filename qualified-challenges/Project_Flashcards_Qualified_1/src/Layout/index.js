@@ -5,6 +5,7 @@ import { listDecks } from "../utils/api/index";
 import Desks from "./Desks";
 import { Switch, Route } from "react-router-dom";
 import Study from "./Desk/Study";
+import ViewAllDesk from "./Desk/ViewAllDesk";
 function Layout() {
   const [listDesks, setListDesks] = useState([]);
 
@@ -34,13 +35,23 @@ function Layout() {
 
         <Desks listDesks={listDesks} />
 
-        {/* <NotFound /> */}
-      </div>
-      <Switch>
-        <Route path="/decks/:deckId/study">
-          <Study />
+        {/* <Switch> */}
+        {/* <Route exact path="/">
+          <Home />
         </Route>
-      </Switch>
+          <Route exact path="/decks/:deckId">
+            <ViewAllDesk />
+          </Route>
+
+          <Route path="/decks/:deckId/study">
+            <Study />
+          </Route>
+
+          <Route NoMatch>
+            <NotFound />
+          </Route>
+        </Switch> */}
+      </div>
     </>
   );
 }

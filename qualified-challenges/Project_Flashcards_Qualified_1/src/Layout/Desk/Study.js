@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouteMatch } from "react-router-dom";
 import { readDeck } from "../../utils/api";
-import Desk from "../Desk";
+import Cards from "./Cards";
 import Header from "../Header";
 import BreadCrumb from "../BreadCrumb";
 function Study() {
@@ -23,7 +23,7 @@ function Study() {
     }
     loadCard();
     // console.log("desk", deskI);
-  }, []);
+  }, [deckId]);
   console.log("desk", deskI);
   // return <p> Study {JSON.stringify(deckId)}</p>;
 
@@ -31,7 +31,7 @@ function Study() {
     <div>
       <Header />
       <BreadCrumb name={deskI.name} url={url} />
-      {/* <Desk /> */}
+      <Cards cards={deskI} />
     </div>
   );
 }
