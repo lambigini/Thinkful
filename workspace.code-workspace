@@ -23,6 +23,9 @@
     },
     {
       "path": "../starter-constellations-server-master"
+    },
+    {
+      "path": "../../ThinkFull course/Solution/thinkful-flashcards-main"
     }
   ],
   "settings": {

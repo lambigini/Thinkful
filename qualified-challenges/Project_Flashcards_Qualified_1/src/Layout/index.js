@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom";
+
+import { Homepage } from "../HomePage/HomePage";
+import { listDecks } from "../utils/api/index";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import { listDecks } from "../utils/api/index";
-import Desks from "./Desks";
-import { Switch, Route } from "react-router-dom";
-import Study from "./Desk/Study";
-import ViewAllDesk from "./Desk/ViewAllDesk";
+
 function Layout() {
   const [listDesks, setListDesks] = useState([]);
 
@@ -20,39 +20,25 @@ function Layout() {
     // console.log("listDesks", listDesks);
   }, []);
 
-  // console.log("listDesks", listDesks);
+  console.log("layout page");
 
   return (
-    <>
+    <div>
       <Header />
+
       <div className="container">
         {/* TODO: Implement the screen starting here */}
-
-        <button onClick={() => console.log("button clicked")}>
-          {" "}
-          Create Desk
-        </button>
-
-        <Desks listDesks={listDesks} />
-
-        {/* <Switch> */}
-        {/* <Route exact path="/">
-          <Home />
-        </Route>
-          <Route exact path="/decks/:deckId">
-            <ViewAllDesk />
+        <Switch>
+          <Route exact path="/">
+            <Homepage listDesks={listDesks} />
           </Route>
 
-          <Route path="/decks/:deckId/study">
-            <Study />
-          </Route>
-
-          <Route NoMatch>
+          <Route>
             <NotFound />
           </Route>
-        </Switch> */}
+        </Switch>
       </div>
-    </>
+    </div>
   );
 }
 

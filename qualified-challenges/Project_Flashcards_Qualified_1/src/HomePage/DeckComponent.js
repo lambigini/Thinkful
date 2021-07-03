@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-function Desk({ desk }) {
+function DeckComponent({ desk }) {
   return (
     <div className="card">
       <div className="card-body">
@@ -12,7 +12,6 @@ function Desk({ desk }) {
         </Link>
 
         <Link to={`/decks/${desk.id}/study`} className="btn btn-primary">
-          {console.log("desk", desk)}
           Study
         </Link>
         <Link className="btn btn-danger">Delete</Link>
@@ -21,4 +20,4 @@ function Desk({ desk }) {
   );
 }
 
-export default Desk;
+export default DeckComponent;
