@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-
 import { Homepage } from "../HomePage/HomePage";
 import { listDecks } from "../utils/api/index";
 import Header from "./Header";
@@ -20,8 +19,17 @@ function Layout() {
     // console.log("listDesks", listDesks);
   }, []);
 
-  console.log("layout page");
-
+  const handleDeleteButton = (indexToDeleted) => {
+    console.log("button clicked");
+    const message = "Do you really want to Delete this Deck?";
+    const result = window.confirm(message);
+    {
+      result &&
+        setListDesks((current) =>
+          current.filter((deck, index) => index !== indexToDeleted)
+        );
+    }
+  };
   return (
     <div>
       <Header />
@@ -30,7 +38,10 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
-            <Homepage listDesks={listDesks} />
+            <Homepage
+              listDesks={listDesks}
+              handleDeleteButton={handleDeleteButton}
+            />
           </Route>
 
           <Route>

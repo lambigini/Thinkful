@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-function DeckComponent({ desk }) {
+function DeckComponent({ desk, handleDeleteButton }) {
   return (
     <div className="card">
       <div className="card-body">
@@ -14,7 +14,9 @@ function DeckComponent({ desk }) {
         <Link to={`/decks/${desk.id}/study`} className="btn btn-primary">
           Study
         </Link>
-        <Link className="btn btn-danger">Delete</Link>
+        <button className="btn btn-danger" onClick={handleDeleteButton}>
+          Delete
+        </button>
       </div>
     </div>
   );

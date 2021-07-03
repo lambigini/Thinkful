@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DeckComponent from "./DeckComponent";
 
-function DeckList({ listDesks }) {
+function DeckList({ listDesks, handleDeleteButton }) {
   // console.log("listDesks in Desks", listDesks);
+
   const listNumOfDesks = listDesks.map((desk, index) => (
-    <DeckComponent desk={desk} key={index} />
+    <DeckComponent
+      desk={desk}
+      key={index}
+      handleDeleteButton={() => handleDeleteButton(index)}
+    />
   ));
 
-  // console.log("listNumOfDesks", listNumOfDesks);
   return (
     // list of desks
     <div>
