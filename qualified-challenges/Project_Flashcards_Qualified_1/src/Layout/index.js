@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import DecksRoute from "../DecksRoute/DecksRoute";
 import { Homepage } from "../HomePage/HomePage";
 import { listDecks } from "../utils/api/index";
 import Header from "./Header";
@@ -42,6 +43,10 @@ function Layout() {
               listDesks={listDesks}
               handleDeleteButton={handleDeleteButton}
             />
+          </Route>
+
+          <Route path="/decks/">
+            <DecksRoute />
           </Route>
 
           <Route>
