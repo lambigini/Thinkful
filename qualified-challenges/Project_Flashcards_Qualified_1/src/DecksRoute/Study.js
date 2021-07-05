@@ -3,7 +3,7 @@ import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
 
-function Study({ listDesks }) {
+function Study() {
   //   return <h2> inside Study function</h2>;
   //get the object call from api with deck get from useParam
   //show card 1 "front"
@@ -12,20 +12,25 @@ function Study({ listDesks }) {
   const [deckObject, setDeckObject] = useState({});
   const params = useParams();
   const { url } = useRouteMatch();
-  console.log("params ", params);
-  console.log("params.deckId ", params.deckId);
-  console.log("url ", url);
+  const [cards, setCards] = useState([]);
+  const [flip, setFlip] = useState(false);
 
   useEffect(() => {
     const abortController = new AbortController();
     const deckObjectFromAPI = readDeck(
       params.deckId,
       abortController.signal
-    ).then((response) => setDeckObject(response));
+    ).then((response) => {
+      setDeckObject(response);
+      setCards(response.cards);
+    });
   }, [params.deckId]);
 
-  console.log("deckObject ", deckObject);
-  console.log("deckObject.id ", deckObject.id);
+  const cardComponent = cards.map((card) => card);
+  const handleButtonClick = () => {
+    setFlip((current) => (current = !current));
+  };
+
   return (
     <div>
       <nav aria-label="breadcrumb">
@@ -41,6 +46,23 @@ function Study({ listDesks }) {
           </li>
         </ol>
       </nav>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{deckObject.name}</h5>
+
+          <p class="card-text">
+            {flip ? cardComponent[0].front : cardComponent[0].back}
+          </p>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onClick={handleButtonClick}
+          >
+            Flip
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

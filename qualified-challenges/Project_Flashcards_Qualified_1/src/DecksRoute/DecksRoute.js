@@ -28,7 +28,7 @@ function DecksRoute({ listDesks }) {
         </Route>
 
         <Route path="/decks/:deckId/study">
-          <Study listDesks={listDesks} />
+          <Study />
         </Route>
 
         <Route path="/decks/:deckId/edit">
