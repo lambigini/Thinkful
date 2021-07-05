@@ -46,7 +46,7 @@ function Layout() {
           </Route>
 
           <Route path="/decks/">
-            <DecksRoute />
+            <DecksRoute listDesks={listDesks} />
           </Route>
 
           <Route>

@@ -8,7 +8,7 @@ import AddCard from "./AddCard";
 import EditCard from "./EditCard";
 import DeckHome from "./DeckHome";
 
-function DecksRoute() {
+function DecksRoute({ listDesks }) {
   // return <h2>DecksRoute function</h2>;
 
   return (
@@ -28,7 +28,7 @@ function DecksRoute() {
         </Route>
 
         <Route path="/decks/:deckId/study">
-          <Study />
+          <Study listDesks={listDesks} />
         </Route>
 
         <Route path="/decks/:deckId/edit">
