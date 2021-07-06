@@ -4,67 +4,115 @@ import { readDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
 
 function Study() {
-  //   return <h2> inside Study function</h2>;
-  //get the object call from api with deck get from useParam
-  //show card 1 "front"
-  // click on "flip" show the "back" and the "next" button
-
   const [deckObject, setDeckObject] = useState({});
   const params = useParams();
   const { url } = useRouteMatch();
   const [cards, setCards] = useState([]);
   const [flip, setFlip] = useState(false);
+  const [cardNumber, setCardNumber] = useState(0);
+  const [side, setSide] = useState("front");
 
   useEffect(() => {
     const abortController = new AbortController();
-    const deckObjectFromAPI = readDeck(
-      params.deckId,
-      abortController.signal
-    ).then((response) => {
-      setDeckObject(response);
-      setCards(response.cards);
-    });
+    const deckObjectFromAPI = readDeck(params.deckId, abortController.signal)
+      .then((response) => {
+        setDeckObject((current) => (current = { ...current, ...response }));
+
+        setCards((current) => (current = [...current, ...response.cards]));
+      })
+      .catch((error) => console.log("ERROR", error));
   }, [params.deckId]);
 
-  const cardComponent = cards.map((card) => card);
   const handleButtonClick = () => {
-    setFlip((current) => (current = !current));
+    if (side === "front") {
+      setFlip((current) => !current);
+      setSide((current) => (current = "back"));
+    } else {
+      setFlip((current) => !current);
+      setSide((current) => (current = "front"));
+    }
   };
 
-  return (
-    <div>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href={`${url}`}>{deckObject.name} </a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Study
-          </li>
-        </ol>
-      </nav>
+  // console.log("side", side);
+  // console.log("flip", flip);
 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{deckObject.name}</h5>
+  console.log("deckObject", deckObject);
 
-          <p class="card-text">
-            {flip ? cardComponent[0].front : cardComponent[0].back}
-          </p>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            onClick={handleButtonClick}
-          >
-            Flip
-          </button>
+  console.log("cards ", cards);
+  // console.log("deckObject.cards", deckObject.cards);
+
+  // console.log("cards length ", cards.length);
+  // console.log("cards[cardNumber]", cards[cardNumber]);
+
+  if (cards.length > 1) {
+    return (
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`${url}`}>{deckObject.name} </a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Study
+            </li>
+          </ol>
+        </nav>
+
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">{deckObject.name}</h5>
+
+            <p className="card-text">{cards[cardNumber][side]}</p>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleButtonClick}
+            >
+              Flip
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <h2> card length undefine</h2>;
+  }
+
+  // return (
+  //   <div>
+  //     <nav aria-label="breadcrumb">
+  //       <ol className="breadcrumb">
+  //         <li className="breadcrumb-item">
+  //           <a href="/">Home</a>
+  //         </li>
+  //         <li className="breadcrumb-item">
+  //           <a href={`${url}`}>{deckObject.name} </a>
+  //         </li>
+  //         <li className="breadcrumb-item active" aria-current="page">
+  //           Study
+  //         </li>
+  //       </ol>
+  //     </nav>
+
+  //     <div className="card">
+  //       <div className="card-body">
+  //         <h5 className="card-title">{deckObject.name}</h5>
+
+  //         <p className="card-text">{cards[cardNumber][side]}</p>
+  //         <button
+  //           type="button"
+  //           className="btn btn-secondary"
+  //           onClick={handleButtonClick}
+  //         >
+  //           Flip
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default Study;
