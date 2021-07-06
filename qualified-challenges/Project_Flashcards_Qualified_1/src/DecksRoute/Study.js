@@ -7,10 +7,13 @@ function Study() {
   const [deckObject, setDeckObject] = useState({});
   const params = useParams();
   const { url } = useRouteMatch();
-  const [cards, setCards] = useState([]);
-  const [flip, setFlip] = useState(false);
-  const [cardNumber, setCardNumber] = useState(0);
-  const [side, setSide] = useState("front");
+  const [cardNeedStudy, setCardNeedStudy] = useState({
+    cards: [],
+    cardNumber: 0,
+    cardLength: 0,
+    side: "front",
+    flip: false,
+  });
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -18,18 +21,37 @@ function Study() {
       .then((response) => {
         setDeckObject((current) => (current = { ...current, ...response }));
 
-        setCards((current) => (current = [...current, ...response.cards]));
+        setCardNeedStudy(
+          (current) =>
+            (current = {
+              ...current,
+              cards: response.cards,
+              cardLength: response.cards.length,
+            })
+        );
       })
       .catch((error) => console.log("ERROR", error));
   }, [params.deckId]);
 
   const handleButtonClick = () => {
-    if (side === "front") {
-      setFlip((current) => !current);
-      setSide((current) => (current = "back"));
+    if (cardNeedStudy.side === "front") {
+      setCardNeedStudy(
+        (current) =>
+          (current = {
+            ...current,
+            ["flip"]: !current["flip"],
+            side: "back",
+          })
+      );
     } else {
-      setFlip((current) => !current);
-      setSide((current) => (current = "front"));
+      setCardNeedStudy(
+        (current) =>
+          (current = {
+            ...current,
+            ["flip"]: !current["flip"],
+            side: "front",
+          })
+      );
     }
   };
 
@@ -38,13 +60,13 @@ function Study() {
 
   console.log("deckObject", deckObject);
 
-  console.log("cards ", cards);
+  // console.log("cards ", cards);
   // console.log("deckObject.cards", deckObject.cards);
 
   // console.log("cards length ", cards.length);
   // console.log("cards[cardNumber]", cards[cardNumber]);
 
-  if (cards.length > 1) {
+  if (cardNeedStudy.cardLength > 1) {
     return (
       <div>
         <nav aria-label="breadcrumb">
@@ -63,9 +85,17 @@ function Study() {
 
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">{deckObject.name}</h5>
+            <h5 className="card-title">
+              <h5 className="card-title">{deckObject.name}</h5>
+            </h5>
 
-            <p className="card-text">{cards[cardNumber][side]}</p>
+            <p className="card-text">
+              {
+                cardNeedStudy.cards[cardNeedStudy.cardNumber][
+                  cardNeedStudy.side
+                ]
+              }
+            </p>
             <button
               type="button"
               className="btn btn-secondary"
@@ -80,39 +110,6 @@ function Study() {
   } else {
     return <h2> card length undefine</h2>;
   }
-
-  // return (
-  //   <div>
-  //     <nav aria-label="breadcrumb">
-  //       <ol className="breadcrumb">
-  //         <li className="breadcrumb-item">
-  //           <a href="/">Home</a>
-  //         </li>
-  //         <li className="breadcrumb-item">
-  //           <a href={`${url}`}>{deckObject.name} </a>
-  //         </li>
-  //         <li className="breadcrumb-item active" aria-current="page">
-  //           Study
-  //         </li>
-  //       </ol>
-  //     </nav>
-
-  //     <div className="card">
-  //       <div className="card-body">
-  //         <h5 className="card-title">{deckObject.name}</h5>
-
-  //         <p className="card-text">{cards[cardNumber][side]}</p>
-  //         <button
-  //           type="button"
-  //           className="btn btn-secondary"
-  //           onClick={handleButtonClick}
-  //         >
-  //           Flip
-  //         </button>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default Study;
