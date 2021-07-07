@@ -13,8 +13,6 @@ function DecksRoute({ listDesks }) {
 
   return (
     <div>
-      <p>inside DecksRoute function</p>
-
       <Switch>
         <Route exact path="/decks/">
           <DeckHome />

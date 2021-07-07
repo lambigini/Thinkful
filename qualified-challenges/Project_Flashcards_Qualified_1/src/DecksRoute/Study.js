@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+  useHistory,
+} from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
 
@@ -7,6 +13,8 @@ function Study() {
   const [deckObject, setDeckObject] = useState({});
   const params = useParams();
   const { url } = useRouteMatch();
+  const history = useHistory();
+
   const [cardNeedStudy, setCardNeedStudy] = useState({
     cards: [],
     cardNumber: 0,
@@ -54,11 +62,46 @@ function Study() {
       );
     }
   };
+  function restartCard() {
+    const message = "Restart card?";
+    const result = window.confirm(message);
+    {
+      result ? window.location.reload() : history.push("/");
+    }
+  }
+  const handleNextButton = () => {
+    console.log("handle next button logic");
 
+    // change current card to next card
+    if (cardNeedStudy.cardNumber < cardNeedStudy.cardLength) {
+      console.log("Before cardNeedStudy.cardLength", cardNeedStudy.cardLength);
+      console.log("Before cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
+      setCardNeedStudy(
+        (current) =>
+          (current = {
+            ...current,
+            ["cardNumber"]: current.cardNumber++,
+            ["side"]: "front",
+            ["flip"]: !current["flip"],
+          })
+      );
+      console.log("After cardNeedStudy.cardLength", cardNeedStudy.cardLength);
+      console.log("After cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
+      if (
+        cardNeedStudy.cardNumber === cardNeedStudy.cardLength - 1 &&
+        cardNeedStudy.flip
+      ) {
+        restartCard();
+      }
+    }
+  };
+
+  // console.log("cardNeedStudy.cardLength", cardNeedStudy.cardLength);
+  // console.log("cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
   // console.log("side", side);
   // console.log("flip", flip);
 
-  console.log("deckObject", deckObject);
+  // console.log("deckObject", deckObject);
 
   // console.log("cards ", cards);
   // console.log("deckObject.cards", deckObject.cards);
@@ -66,7 +109,7 @@ function Study() {
   // console.log("cards length ", cards.length);
   // console.log("cards[cardNumber]", cards[cardNumber]);
 
-  if (cardNeedStudy.cardLength > 1) {
+  if (cardNeedStudy.cards.length) {
     return (
       <div>
         <nav aria-label="breadcrumb">
@@ -75,7 +118,7 @@ function Study() {
               <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href={`${url}`}>{deckObject.name} </a>
+              <a href={`${url}`}>Rendering in React </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Study
@@ -85,10 +128,11 @@ function Study() {
 
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">
-              <h5 className="card-title">{deckObject.name}</h5>
-            </h5>
+            <h5 className="card-title">{deckObject.name}</h5>
 
+            <h6 className="card-subtitle mb-2 text-muted">
+              Card {cardNeedStudy.cardNumber + 1} of {cardNeedStudy.cardLength}
+            </h6>
             <p className="card-text">
               {
                 cardNeedStudy.cards[cardNeedStudy.cardNumber][
@@ -103,6 +147,19 @@ function Study() {
             >
               Flip
             </button>
+
+            {cardNeedStudy.flip ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleNextButton}
+                id="nextBtn"
+              >
+                Next
+              </button>
+            ) : (
+              console.log("click next button Do Nothing")
+            )}
           </div>
         </div>
       </div>
