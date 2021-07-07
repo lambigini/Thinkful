@@ -62,13 +62,7 @@ function Study() {
       );
     }
   };
-  function restartCard() {
-    const message = "Restart card?";
-    const result = window.confirm(message);
-    {
-      result ? window.location.reload() : history.push("/");
-    }
-  }
+
   const handleNextButton = () => {
     console.log("handle next button logic");
 
@@ -91,7 +85,11 @@ function Study() {
         cardNeedStudy.cardNumber === cardNeedStudy.cardLength - 1 &&
         cardNeedStudy.flip
       ) {
-        restartCard();
+        const message = "Restart card?";
+        const result = window.confirm(message);
+        {
+          result ? window.location.reload() : history.push("/");
+        }
       }
     }
   };
@@ -148,7 +146,7 @@ function Study() {
               Flip
             </button>
 
-            {cardNeedStudy.flip ? (
+            {cardNeedStudy.flip && (
               <button
                 type="button"
                 className="btn btn-primary"
@@ -157,8 +155,6 @@ function Study() {
               >
                 Next
               </button>
-            ) : (
-              console.log("click next button Do Nothing")
             )}
           </div>
         </div>
