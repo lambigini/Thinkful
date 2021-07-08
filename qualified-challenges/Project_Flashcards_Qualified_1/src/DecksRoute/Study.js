@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Switch,
-  Route,
-  useParams,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
+import { useParams, useRouteMatch, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
 
@@ -68,8 +62,6 @@ function Study() {
 
     // change current card to next card
     if (cardNeedStudy.cardNumber < cardNeedStudy.cardLength) {
-      console.log("Before cardNeedStudy.cardLength", cardNeedStudy.cardLength);
-      console.log("Before cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
       setCardNeedStudy(
         (current) =>
           (current = {
@@ -79,8 +71,7 @@ function Study() {
             ["flip"]: !current["flip"],
           })
       );
-      console.log("After cardNeedStudy.cardLength", cardNeedStudy.cardLength);
-      console.log("After cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
+
       if (
         cardNeedStudy.cardNumber === cardNeedStudy.cardLength - 1 &&
         cardNeedStudy.flip
@@ -94,7 +85,7 @@ function Study() {
     }
   };
 
-  // console.log("cardNeedStudy.cardLength", cardNeedStudy.cardLength);
+  // console.log("cardNeedStudy.cards.length", cardNeedStudy.cards.length);
   // console.log("cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
   // console.log("side", side);
   // console.log("flip", flip);
@@ -107,7 +98,7 @@ function Study() {
   // console.log("cards length ", cards.length);
   // console.log("cards[cardNumber]", cards[cardNumber]);
 
-  if (cardNeedStudy.cards.length) {
+  function notEnoughCard() {
     return (
       <div>
         <nav aria-label="breadcrumb">
@@ -116,18 +107,50 @@ function Study() {
               <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href={`${url}`}>Rendering in React </a>
+              <a href={`${url}`}> Rendering in React </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Study
             </li>
           </ol>
         </nav>
-
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">{deckObject.name}</h5>
+            <h5 className="card-title">{deckObject.name} </h5>
+            <h6 className="card-subtitle mb-2 text-muted">Not enough cards</h6>
+            <p className="card-text">
+              You need at least 3 cards to study. There are{" "}
+              {cardNeedStudy.cardLength} in this desk
+            </p>
 
+            <Link to="/decks/new" className="btn btn-primary">
+              Add Cards
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function haveEnoughCard() {
+    return (
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href={`${url}`}> Rendering in React </a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Study
+            </li>
+          </ol>
+        </nav>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">{deckObject.name} </h5>
             <h6 className="card-subtitle mb-2 text-muted">
               Card {cardNeedStudy.cardNumber + 1} of {cardNeedStudy.cardLength}
             </h6>
@@ -145,7 +168,6 @@ function Study() {
             >
               Flip
             </button>
-
             {cardNeedStudy.flip && (
               <button
                 type="button"
@@ -160,8 +182,12 @@ function Study() {
         </div>
       </div>
     );
+  }
+
+  if (cardNeedStudy.cards.length < 3) {
+    return notEnoughCard();
   } else {
-    return <h2> card length undefine</h2>;
+    return haveEnoughCard();
   }
 }
 
