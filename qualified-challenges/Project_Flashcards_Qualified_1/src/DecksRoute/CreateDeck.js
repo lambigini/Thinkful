@@ -21,10 +21,13 @@ function CreateDeck() {
   const handleChange = ({ target }) => {
     // console.log("target ", target);
     // console.log("target.name ", target.name);
-    setFormData({
-      ...formData,
-      [target.name]: target.value,
-    });
+    setFormData(
+      (current) =>
+        (current = {
+          ...current,
+          [target.name]: target.value,
+        })
+    );
   };
 
   const handleSubmit = (event) => {
