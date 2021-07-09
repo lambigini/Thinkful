@@ -3,9 +3,42 @@ import { Switch, Route, Link } from "react-router-dom";
 
 function CreateDeck() {
   // return <h2> inside CreateDeck function</h2>;
-  //breadcrumb
-  // a form
+  // const [name, setName] = useState("");
+  // const handleNameChange = (event) => setName(event.target.value);
+  // console.log("Current value of name:", name);
 
+  // const [description, setDescription] = useState("");
+  // const handleDescriptionChange = (event) => setDescription(event.target.value);
+  // console.log("Current value of description:", description);
+
+  const initialFormState = {
+    name: "default value of name",
+    description: "default description",
+  };
+
+  const [formData, setFormData] = useState({ ...initialFormState });
+
+  const handleChange = ({ target }) => {
+    // console.log("target ", target);
+    // console.log("target.name ", target.name);
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log("Submitted: ", name, description);
+    // setName((current) => (current = ""));
+    // setDescription((current) => (current = ""));
+    // console.log("Submitted: ", name, description);
+
+    console.log("Submitted: ", formData);
+    setFormData((current) => (current = { ...initialFormState }));
+  };
+
+  console.log("After Submitted: ", formData);
   return (
     <div>
       <nav aria-label="breadcrumb">
@@ -17,7 +50,7 @@ function CreateDeck() {
         </ol>
       </nav>
       <h1>Create Deck</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
           <br></br>
@@ -27,8 +60,8 @@ function CreateDeck() {
             name="name"
             required
             placeholder="Deck Name"
-            // onChange={handleNameChange}
-            // value={name}
+            onChange={handleChange}
+            value={formData.name}
           />
         </label>
         <br></br>
@@ -43,17 +76,17 @@ function CreateDeck() {
           autoFocus="on"
           rows="10"
           cols="20"
-          // onChange={handleDescriptionChange}
-          // value={description}
+          onChange={handleChange}
+          value={formData.description}
         ></textarea>
 
         <br></br>
-        <Link to="/" class="btn btn-secondary">
+        <Link to="/" className="btn btn-secondary">
           Cancel
         </Link>
-        <Link to="/decks/:deckId" class="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Submit
-        </Link>
+        </button>
       </form>
     </div>
   );
