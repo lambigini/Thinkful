@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
+import { createDeck } from "../utils/api";
+import { listDecks } from "../utils/api/index";
 
 function CreateDeck() {
   // return <h2> inside CreateDeck function</h2>;
@@ -10,6 +12,9 @@ function CreateDeck() {
   // const [description, setDescription] = useState("");
   // const handleDescriptionChange = (event) => setDescription(event.target.value);
   // console.log("Current value of description:", description);
+  const [newId, setNewId] = useState(1);
+
+  const history = useHistory();
 
   const initialFormState = {
     name: "default value of name",
@@ -31,17 +36,18 @@ function CreateDeck() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     // console.log("Submitted: ", name, description);
     // setName((current) => (current = ""));
     // setDescription((current) => (current = ""));
     // console.log("Submitted: ", name, description);
+    const abortController = new AbortController();
+    event.preventDefault();
 
-    console.log("Submitted: ", formData);
-    setFormData((current) => (current = { ...initialFormState }));
+    createDeck(formData, abortController.signal).then((response) =>
+      history.push(`/decks/${response.id}`)
+    );
   };
 
-  console.log("After Submitted: ", formData);
   return (
     <div>
       <nav aria-label="breadcrumb">
