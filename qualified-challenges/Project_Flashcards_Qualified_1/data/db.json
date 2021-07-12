@@ -11,24 +11,9 @@
       "id": 2
     },
     {
-      "name": "a",
-      "description": "b",
-      "id": 3
-    },
-    {
-      "name": "c",
-      "description": "d",
-      "id": 4
-    },
-    {
       "name": "harrison",
       "description": "good job",
       "id": 5
-    },
-    {
-      "name": "a",
-      "description": "aaa",
-      "id": 6
     },
     {
       "name": "default value of name",
@@ -59,21 +44,6 @@
       "name": "12",
       "description": "12",
       "id": 12
-    },
-    {
-      "name": "14",
-      "description": "14",
-      "id": 13
-    },
-    {
-      "name": "14.1",
-      "description": "14.1",
-      "id": 14
-    },
-    {
-      "name": "15",
-      "description": "15",
-      "id": 15
     }
   ],
   "cards": [

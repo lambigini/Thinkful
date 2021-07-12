@@ -8,7 +8,7 @@ import AddCard from "./AddCard";
 import EditCard from "./EditCard";
 import DeckHome from "./DeckHome";
 
-function DecksRoute({ listDesks }) {
+function DecksRoute() {
   // return <h2>DecksRoute function</h2>;
 
   return (

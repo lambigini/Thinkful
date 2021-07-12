@@ -17,11 +17,9 @@ function Layout() {
     }
 
     getListOfDesk();
-    // console.log("listDesks", listDesks);
-  }, []);
-
+  }, [listDecks]);
+  // console.log("listDesks", listDesks);
   const handleDeleteButton = (indexToDeleted) => {
-    console.log("button clicked");
     const message = "Do you really want to Delete this Deck?";
     const result = window.confirm(message);
     {
