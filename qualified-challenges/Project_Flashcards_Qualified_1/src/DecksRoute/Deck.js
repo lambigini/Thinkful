@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
-import { deleteDeck, readDeck } from "../utils/api";
+import { deleteDeck, listCards, readDeck } from "../utils/api";
+import CardComponent from "./CardComponent";
 
 function Deck() {
   // return <h2> inside Deck function</h2>;
@@ -14,6 +15,7 @@ function Deck() {
     name: "",
     description: "",
   });
+  const [listCurrentCards, setListCurrentCards] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -21,17 +23,27 @@ function Deck() {
     async function getCurrentDeck() {
       const response = await readDeck(deckId, abortController.signal);
 
-      console.log("response, ", response);
       setCurrentDeck((current) => ({ ...current, ...response }));
+
+      const listCardsFromAPI = await listCards(deckId, abortController.signal);
+
+      setListCurrentCards((current) => (current = listCardsFromAPI));
     }
     getCurrentDeck();
   }, [deckId]);
 
-  console.log("deckId ", deckId);
+  // console.log("deckId ", deckId);
 
-  console.log("currentDeck ", currentDeck);
-  console.log("currentDeck.name ", currentDeck.name);
+  // console.log("currentDeck ", currentDeck);
+  // console.log("currentDeck.name ", currentDeck.name);
   // console.log("listDesks 1 ", listDesks[0]);
+
+  console.log("listCurrentCards ", listCurrentCards);
+  console.log("listCurrentCards[0] ", listCurrentCards[0]);
+
+  const cards = listCurrentCards.map((card, index) => (
+    <CardComponent key={index} card={card} />
+  ));
 
   const handleDeleteButton = (event) => {
     console.log("event ", event);
@@ -40,10 +52,15 @@ function Deck() {
     const result = window.confirm(message);
     {
       result &&
-        deleteDeck(deckId, abortController.signal).then(history.push("/"));
+        deleteDeck(deckId, abortController.signal).then((respone) => {
+          history.push("/");
+          window.location.reload();
+        });
     }
   };
-  if (currentDeck) {
+
+  console.log("cards ", cards);
+  if (currentDeck && cards) {
     return (
       <div>
         <nav aria-label="breadcrumb">
@@ -64,7 +81,9 @@ function Deck() {
           <div className="card-body">
             <h5 className="card-title">{currentDeck.name}</h5>
             <p className="card-text">{currentDeck.description}</p>
-            <Link className="btn btn-secondary">Edit</Link>
+            <Link to="/decks/:deckId/edit" className="btn btn-secondary">
+              Edit
+            </Link>
 
             <Link
               to={`/decks/${currentDeck.id}/study`}
@@ -72,12 +91,18 @@ function Deck() {
             >
               Study
             </Link>
-            <Link className="btn btn-primary">Add Card</Link>
+            <Link to="/decks/:deckId/cards/new" className="btn btn-primary">
+              Add Card
+            </Link>
             <button className="btn btn-danger" onClick={handleDeleteButton}>
               Delete
             </button>
           </div>
         </div>
+        <h2>Cards</h2>
+
+        {cards}
+        <h2>After Card</h2>
       </div>
     );
   }

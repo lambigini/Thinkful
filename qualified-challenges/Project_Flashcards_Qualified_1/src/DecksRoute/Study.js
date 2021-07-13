@@ -141,7 +141,7 @@ function Study() {
               <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href={`${url}`}> Rendering in React </a>
+              <a href={`${url}`}> {deckObject.name} </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Study
@@ -150,7 +150,7 @@ function Study() {
         </nav>
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">{deckObject.name} </h5>
+            {/* <h5 className="card-title">{deckObject.name} </h5> */}
             <h6 className="card-subtitle mb-2 text-muted">
               Card {cardNeedStudy.cardNumber + 1} of {cardNeedStudy.cardLength}
             </h6>
