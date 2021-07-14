@@ -48,7 +48,6 @@ function Deck() {
     }
   };
 
-  console.log("cards ", cards);
   if (currentDeck && cards) {
     return (
       <div>
