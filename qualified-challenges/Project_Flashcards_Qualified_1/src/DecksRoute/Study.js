@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouteMatch, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
-import Breadcrumb from "./Breadcrumb";
 
 function Study() {
   const [deckObject, setDeckObject] = useState({});
@@ -84,19 +83,6 @@ function Study() {
       }
     }
   };
-
-  // console.log("cardNeedStudy.cards.length", cardNeedStudy.cards.length);
-  // console.log("cardNeedStudy.cardNumber", cardNeedStudy.cardNumber);
-  // console.log("side", side);
-  // console.log("flip", flip);
-
-  // console.log("deckObject", deckObject);
-
-  // console.log("cards ", cards);
-  // console.log("deckObject.cards", deckObject.cards);
-
-  // console.log("cards length ", cards.length);
-  // console.log("cards[cardNumber]", cards[cardNumber]);
 
   function notEnoughCard() {
     return (
