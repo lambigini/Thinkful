@@ -2,29 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 
 function CardComponent({ card }) {
-  console.log("card in CardComponent ", card);
-
   return (
-    <div class="card">
-      <div class="container" class="card">
-        <div class="row justify-content-start">
-          <div class="col-6">{card.front}</div>
-          <div class="col-6">{card.back}</div>
+    <div className="card">
+      <div className="card-body">
+        <div className="container">
+          <div className="row justify-content-start">
+            <div className="col-6">{card.front}</div>
+            <div className="col-6">{card.back}</div>
 
-          <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
-            <div class="p-2 bd-highlight">
-              {" "}
-              <Link
-                to={`/decks/${card.deckId}/cards/${card.id}/edit`}
-                class="btn btn-secondary"
-              >
-                Edit
-              </Link>
-            </div>
-            <div class="p-2 bd-highlight">
-              <button type="button" class="btn btn-danger">
-                Danger
-              </button>
+            <div className="d-flex flex-row bd-highlight mb-3 justify-content-end">
+              <div className="p-2 bd-highlight">
+                {" "}
+                <Link
+                  to={`/decks/${card.deckId}/cards/${card.id}/edit`}
+                  className="btn btn-secondary"
+                >
+                  Edit
+                </Link>
+              </div>
+              <div className="p-2 bd-highlight">
+                <button type="button" className="btn btn-danger">
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         </div>

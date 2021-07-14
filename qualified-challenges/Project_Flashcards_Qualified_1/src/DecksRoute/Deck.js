@@ -12,8 +12,8 @@ function Deck() {
     id: 0,
     name: "",
     description: "",
+    cards: [],
   });
-  const [listCurrentCards, setListCurrentCards] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -22,15 +22,11 @@ function Deck() {
       const response = await readDeck(deckId, abortController.signal);
 
       setCurrentDeck((current) => ({ ...current, ...response }));
-
-      const listCardsFromAPI = await listCards(deckId, abortController.signal);
-
-      setListCurrentCards((current) => (current = listCardsFromAPI));
     }
     getCurrentDeck();
   }, [deckId]);
 
-  const cards = listCurrentCards.map((card, index) => (
+  const cards = currentDeck.cards.map((card, index) => (
     <CardComponent key={index} card={card} />
   ));
 
@@ -87,7 +83,7 @@ function Deck() {
         </div>
         <h2>Cards</h2>
 
-        {cards}
+        <div>{cards}</div>
       </div>
     );
   }
