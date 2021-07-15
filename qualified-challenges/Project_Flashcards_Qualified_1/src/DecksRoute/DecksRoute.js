@@ -6,18 +6,11 @@ import Deck from "./Deck";
 import EditDeck from "./EditDeck";
 import AddCard from "./AddCard";
 import EditCard from "./EditCard";
-import DeckHome from "./DeckHome";
 
 function DecksRoute() {
-  // return <h2>DecksRoute function</h2>;
-
   return (
     <div>
       <Switch>
-        <Route exact path="/decks/">
-          <DeckHome />
-        </Route>
-
         <Route exact path="/decks/new">
           <CreateDeck />
         </Route>
