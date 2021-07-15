@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
-import { listDecks } from "../utils/api/index";
+import Breadcrumb from "./Breadcrumb";
 
 function CreateDeck() {
-  // return <h2> inside CreateDeck function</h2>;
-  // const [name, setName] = useState("");
-  // const handleNameChange = (event) => setName(event.target.value);
-  // console.log("Current value of name:", name);
-
-  // const [description, setDescription] = useState("");
-  // const handleDescriptionChange = (event) => setDescription(event.target.value);
-  // console.log("Current value of description:", description);
   const [newId, setNewId] = useState(1);
 
   const history = useHistory();
@@ -24,8 +16,6 @@ function CreateDeck() {
   const [formData, setFormData] = useState({ ...initialFormState });
 
   const handleChange = ({ target }) => {
-    // console.log("target ", target);
-    // console.log("target.name ", target.name);
     setFormData(
       (current) =>
         (current = {
@@ -36,10 +26,6 @@ function CreateDeck() {
   };
 
   const handleSubmit = (event) => {
-    // console.log("Submitted: ", name, description);
-    // setName((current) => (current = ""));
-    // setDescription((current) => (current = ""));
-    // console.log("Submitted: ", name, description);
     const abortController = new AbortController();
     event.preventDefault();
 
@@ -50,14 +36,7 @@ function CreateDeck() {
 
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li className="breadcrumb-item">Create Deck</li>
-        </ol>
-      </nav>
+      <Breadcrumb url={"/"} text={"Create Deck"} />
       <h1>Create Deck</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">

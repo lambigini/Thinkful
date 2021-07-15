@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Study from "./Study";
 import CreateDeck from "./CreateDeck";
@@ -18,7 +18,7 @@ function DecksRoute() {
           <DeckHome />
         </Route>
 
-        <Route path="/decks/new">
+        <Route exact path="/decks/new">
           <CreateDeck />
         </Route>
         <Route exact path="/decks/:deckId">

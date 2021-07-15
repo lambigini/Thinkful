@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { deleteCard, deleteDeck, listCards, readDeck } from "../utils/api";
 import CardComponent from "./CardComponent";
+import Breadcrumb from "./Breadcrumb";
 
 function Deck() {
   const { deckId } = useParams();
@@ -61,17 +62,7 @@ function Deck() {
   if (currentDeck && cards) {
     return (
       <div>
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
-            </li>
-
-            <li className="breadcrumb-item active" aria-current="page">
-              {currentDeck.name}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb text={currentDeck.name} />
 
         <div className="card">
           <div className="card-body">

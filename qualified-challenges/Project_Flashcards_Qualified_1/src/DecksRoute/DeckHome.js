@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import React from "react";
 
 function DeckHome() {
-  return <h2> inside DeckHome function</h2>;
+  return <h2>inside Deck Home</h2>;
 }
 
 export default DeckHome;

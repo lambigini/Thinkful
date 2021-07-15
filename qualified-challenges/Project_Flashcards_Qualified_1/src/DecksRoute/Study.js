@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouteMatch, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
+import Breadcrumb from "./Breadcrumb";
 
 function Study() {
   const [deckObject, setDeckObject] = useState({});
@@ -57,8 +58,6 @@ function Study() {
   };
 
   const handleNextButton = () => {
-    console.log("handle next button logic");
-
     // change current card to next card
     if (cardNeedStudy.cardNumber < cardNeedStudy.cardLength) {
       setCardNeedStudy(
@@ -78,7 +77,9 @@ function Study() {
         const message = "Restart card?";
         const result = window.confirm(message);
         {
-          result ? window.location.reload() : history.push("/");
+          result
+            ? setCardNeedStudy((current) => ({ ...current, ["cardNumber"]: 0 }))
+            : history.push("/");
         }
       }
     }
@@ -121,22 +122,10 @@ function Study() {
   function haveEnoughCard() {
     return (
       <div>
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <a href="/">Home</a>
-            </li>
-            <li className="breadcrumb-item">
-              <a href={`${url}`}> {deckObject.name} </a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Study
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb url={url} object={deckObject} text={"Study"} />
+
         <div className="card">
           <div className="card-body">
-            {/* <h5 className="card-title">{deckObject.name} </h5> */}
             <h6 className="card-subtitle mb-2 text-muted">
               Card {cardNeedStudy.cardNumber + 1} of {cardNeedStudy.cardLength}
             </h6>

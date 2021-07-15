@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
-import { deleteCard } from "../utils/api";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function CardComponent({ card, handleCardDeleteButton }) {
   return (

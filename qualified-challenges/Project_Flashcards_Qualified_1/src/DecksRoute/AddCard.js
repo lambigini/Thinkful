@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouteMatch, Link, useParams } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
+import Breadcrumb from "./Breadcrumb";
 
 function AddCard() {
   const { deckId } = useParams();
@@ -57,17 +58,8 @@ function AddCard() {
 
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href={url}>{currentDeck.name}</a>
-          </li>
-          <li className="breadcrumb-item">Add Card</li>
-        </ol>
-      </nav>
+      <Breadcrumb url={url} object={currentDeck} text={"Add Card"} />
+
       <h1>{currentDeck.name} Add Card</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="front">

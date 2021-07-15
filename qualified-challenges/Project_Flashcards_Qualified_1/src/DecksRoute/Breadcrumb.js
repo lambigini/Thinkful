@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import React from "react";
 
-function Breadcrumb() {
-  //   return <h2> inside Breadcrumb function</h2>;
-
+function Breadcrumb({ url, object, text }) {
   return (
-    <div>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/">Home</a>
+    <nav aria-label="breadcrumb">
+      <ol className="breadcrumb">
+        <li className="breadcrumb-item">
+          <a href="/">Home</a>
+        </li>
+        {object && (
+          <li className="breadcrumb-item">
+            <a href={`${url}`}> {object.name} </a>
           </li>
-          <li class="breadcrumb-item">
-            <a href="study route">Title = deck.name </a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Study
-          </li>
-        </ol>
-      </nav>
-    </div>
+        )}
+
+        <li className="breadcrumb-item active" aria-current="page">
+          {text}
+        </li>
+      </ol>
+    </nav>
   );
 }
 

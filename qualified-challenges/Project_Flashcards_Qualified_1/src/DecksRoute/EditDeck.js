@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouteMatch, Link } from "react-router-dom";
 import { readDeck, updateDeck } from "../utils/api";
+import Breadcrumb from "./Breadcrumb";
 
 function EditDeck() {
   const [currentDeck, setCurrentDeck] = useState({});
@@ -40,17 +41,8 @@ function EditDeck() {
 
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href={url}>{currentDeck.name}</a>
-          </li>
-          <li className="breadcrumb-item">Edit Deck</li>
-        </ol>
-      </nav>
+      <Breadcrumb url={url} object={currentDeck} text={"Edit Deck"} />
+
       <h1>Edit Deck</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">

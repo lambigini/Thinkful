@@ -18,7 +18,7 @@ function Layout() {
 
     getListOfDesk();
   }, [listDecks]);
-  // console.log("listDesks", listDesks);
+
   const handleDeleteButton = (indexToDeleted) => {
     const message = "Do you really want to Delete this Deck?";
     const result = window.confirm(message);
