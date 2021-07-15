@@ -39,8 +39,6 @@ function AddCard() {
     );
   };
 
-  console.log("addCard,", addCard);
-
   const handleSubmit = (event) => {
     const abortController = new AbortController();
     event.preventDefault();

@@ -43,8 +43,6 @@ function EditCard() {
     );
   };
 
-  console.log("updateCurrentCard,", updateCurrentCard);
-
   const handleSubmit = (event) => {
     const abortController = new AbortController();
     event.preventDefault();
