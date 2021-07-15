@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
+import { deleteCard } from "../utils/api";
 
-function CardComponent({ card }) {
+function CardComponent({ card, handleCardDeleteButton }) {
   return (
     <div className="card">
       <div className="card-body">
@@ -21,7 +22,11 @@ function CardComponent({ card }) {
                 </Link>
               </div>
               <div className="p-2 bd-highlight">
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={handleCardDeleteButton}
+                >
                   Delete
                 </button>
               </div>

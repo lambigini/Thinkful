@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
-import { deleteDeck, listCards, readDeck } from "../utils/api";
+import { deleteCard, deleteDeck, listCards, readDeck } from "../utils/api";
 import CardComponent from "./CardComponent";
 
 function Deck() {
-  // return <h2> inside Deck function</h2>;
-
   const { deckId } = useParams();
   const history = useHistory();
   const [currentDeck, setCurrentDeck] = useState({
@@ -26,9 +24,25 @@ function Deck() {
     getCurrentDeck();
   }, [deckId]);
 
-  const cards = currentDeck.cards.map((card, index) => (
-    <CardComponent key={index} card={card} />
-  ));
+  const handleCardDeleteButton = (id) => {
+    const abortController = new AbortController();
+    const message = "Do you really want to Delete this Card?";
+    const result = window.confirm(message);
+
+    {
+      result &&
+        deleteCard(id, abortController.signal).then(window.location.reload());
+    }
+  };
+  const cards = currentDeck.cards.map((card, index) => {
+    return (
+      <CardComponent
+        key={card.id}
+        card={card}
+        handleCardDeleteButton={() => handleCardDeleteButton(card.id)}
+      />
+    );
+  });
 
   const handleDeleteButton = (event) => {
     console.log("event ", event);
