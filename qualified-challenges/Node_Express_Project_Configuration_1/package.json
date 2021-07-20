@@ -1,0 +1,32 @@
+{
+  "name": "node-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "env": {
+    "DATABASE_URL": ""
+  },
+  "scripts": {
+    "docker:build": "docker image build . -t thinkful-ed/zid-be-node-express-01-project-configuration",
+    "docker:run": "docker run --rm -it -p 5000:5000 thinkful-ed/zid-be-node-express-01-project-configuration",
+    "docker:stop": "docker stop $(docker ps -q)",
+    "docker:test": "docker run -t  thinkful-ed/zid-be-node-express-01-project-configuration npm test",
+    "start": "node src/server.js",
+    "start:dev": "nodemon src/server.js",
+    "start:solution": "npm run -it docker:build && npm run docker:run",
+    "test": "NODE_ENV=test mocha test/**/*.test.js --exit",
+    "test:solution": "npm run docker:build && npm run docker:test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}
