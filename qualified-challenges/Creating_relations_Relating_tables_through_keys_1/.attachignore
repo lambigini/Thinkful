@@ -1,0 +1,3 @@
+jest.config.js
+test/solution.test.js
+test/sqlReader.js

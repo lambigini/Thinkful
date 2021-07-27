@@ -1,0 +1,4 @@
+test/sqlReader.js
+test/assignment.test.js
+test/sqlSetup.js
+jest.config.js

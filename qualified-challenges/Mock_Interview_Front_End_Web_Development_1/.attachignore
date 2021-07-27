@@ -1,0 +1,4 @@
+__mocks__/styleMock.js
+__mocks__/fileMock.js
+src/__tests__/App.test.js
+src/__tests__/PostDetail.test.js

@@ -1,0 +1,6 @@
+__tests__/linked-list/linkedList.test.js
+__tests__/linked-list/removeDuplicates.test.js
+__tests__/queue/parkinglot.test.js
+__tests__/queue/queue.test.js
+__tests__/stack/isPalindrome.test.js
+__tests__/stack/stack.test.js

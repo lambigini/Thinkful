@@ -1,0 +1,4 @@
+__tests__/anagram.test.js
+__tests__/firstSingleCharacter.test.js
+__tests__/anagramGroup.test.js
+__tests__/permutationPalindrome.test.js

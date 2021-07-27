@@ -1,0 +1,7 @@
+__tests__/postfix.test.js
+jest.config.js
+__tests__/queue.test.js
+__tests__/stack.test.js
+__tests__/node.test.js
+__tests__/binary.test.js
+__tests__/brackets.test.js

@@ -1,0 +1,3 @@
+test/sqlSetup.js
+test/sqlReader.js
+test/solution.test.js
