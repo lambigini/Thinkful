@@ -21,10 +21,10 @@ function App() {
 
   const [photo, setPhoto] = useState([]);
 
-  const handleClick = (userId) => {
+  const handleClick = (albumId) => {
     // console.log("clicked");
 
-    fetch(`https://jsonplaceholder.typicode.com/albums/${userId}/photos`)
+    fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
       .then((response) => response.json())
       .then(setPhoto)
       .catch((error) => {
@@ -41,7 +41,7 @@ function App() {
         {p.title}
         <img
           // src={p.thumbnailUrl}
-          src={photo.url}
+          src={p.url}
           alt={p.title}
         />
       </li>
