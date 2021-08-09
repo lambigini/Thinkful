@@ -42,8 +42,9 @@ function destroy(request, response) {
 
 function flipExists(request, response, next) {
   const { flipId } = request.params;
-  const foundFlip = flips.find((flip) => flip.id === Number(flipId));
-  if (foundFlip) {
+  const flip = flips.find((flip) => flip.id === Number(flipId));
+  if (flip) {
+    response.locals.flip = flip;
     return next();
   }
   next({
@@ -52,14 +53,19 @@ function flipExists(request, response, next) {
   });
 }
 
-function list(request, response) {
-  response.json({ data: flips });
+function list(req, res) {
+  // response.json({ data: flips });
+  const { countId } = req.params;
+  const byResult = countId ? (flip) => flip.result === countId : () => true;
+  console.log("byResult", byResult);
+
+  res.json({ data: flips.filter(byResult) });
 }
 
 function read(request, response, next) {
   const { flipId } = request.params;
-  const foundFlip = flips.find((flip) => flip.id === Number(flipId));
-  response.json({ data: foundFlip });
+  const flip = flips.find((flip) => flip.id === Number(flipId));
+  response.json({ data: flip });
 }
 
 function resultPropertyIsValid(request, response, next) {
@@ -74,21 +80,20 @@ function resultPropertyIsValid(request, response, next) {
 }
 
 function update(request, response, next) {
-  const { flipId } = request.params;
-  const foundFlip = flips.find((flip) => flip.id === Number(flipId));
+  const flip = response.locals.flip;
 
-  const originalResult = foundFlip.result;
+  const originalResult = flip.result;
   const { data: { result } = {} } = request.body;
 
   if (originalResult !== result) {
     // update the flip
-    foundFlip.result = result;
+    flip.result = result;
     // Adjust the counts
     counts[originalResult] = counts[originalResult] - 1;
     counts[result] = counts[result] + 1;
   }
 
-  response.json({ data: foundFlip });
+  response.json({ data: flip });
 }
 
 module.exports = {

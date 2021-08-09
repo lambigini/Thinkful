@@ -1,5 +1,6 @@
 const path = require("path");
 const notes = require(path.resolve("src/data/notes-data"));
+const ratings = require(path.resolve("src/data/ratings-data"));
 
 function create(req, res) {
   const { data: { text } = {} } = req.body;
@@ -68,4 +69,5 @@ module.exports = {
   read: [noteExists, read],
   update: [noteExists, hasText, update],
   delete: destroy,
+  noteExists,
 };

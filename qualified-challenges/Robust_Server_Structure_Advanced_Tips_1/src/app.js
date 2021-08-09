@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const notesRouter = require("./notes/notes.router");
 
+const ratingsRouter = require("./ratings/rating.router");
+
 app.use(express.json());
+
 app.use("/notes", notesRouter);
 
+app.use("/ratings", ratingsRouter);
 // Not found handler
 app.use((req, res, next) => {
   return next({ status: 404, message: `Not found: ${req.originalUrl}` });
