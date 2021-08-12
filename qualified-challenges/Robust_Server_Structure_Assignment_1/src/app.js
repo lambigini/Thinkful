@@ -5,9 +5,13 @@ const app = express();
 app.use(express.json());
 
 // TODO: Add code to meet the requirements and make the tests pass.
-const urlsRouter = require("./urls/ulrs.router");
+const urlsRouter = require("./urls/urls.router");
+
+const usesRouter = require("./uses/uses.router");
 
 app.use("/urls", urlsRouter);
+
+app.use("/uses", usesRouter);
 
 // not found handler
 
