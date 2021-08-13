@@ -1,6 +1,6 @@
 module.exports = {
-  host: "",
-  user: "",
-  database: "",
-  password: "",
+  host: "kashin.db.elephantsql.com",
+  user: "whutcxaw",
+  database: "whutcxaw",
+  password: "4ojeI_OdFx9bVoeY5vH7gnc3BcTXiHOK",
 };
