@@ -1,0 +1,2 @@
+select description
+from artworks
