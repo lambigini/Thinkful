@@ -26,18 +26,9 @@
     },
     {
       "path": "../Projects-10M/Project_Flashcards_Qualified_1"
-    },
-    {
-      "path": "../../Html CSS/ClydeBank-Coffee-Shop-master"
-    },
-    {
-      "path": "../Projects-10M/Project_GrubDash_Qualified_1"
-    },
-    {
-      "path": "../Projects-10M/starter-grub-dash-front-end-main"
     }
   ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "ClydeBank-Coffee-Shop-master"
+    "liveServer.settings.multiRootWorkspaceName": "getting-started-with-react"
   }
 }
