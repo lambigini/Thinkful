@@ -7,27 +7,44 @@
 //     data: [{ product_title: "product 1" }, { product_title: "product 2" }],
 //   });
 // }
-
 const productsService = require("./products.service");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
-function list(req, res, next) {
-  productsService
-    .list()
-    .then((data) => res.json({ data }))
-    .catch(next);
+async function list(req, res, next) {
+  const data = await productsService.list();
+  res.json({ data });
 }
 
-function productExists(req, res, next) {
-  productsService
-    .read(req.params.productId)
-    .then((product) => {
-      if (product) {
-        res.locals.product = product;
-        return next();
-      }
-      next({ status: 404, message: `Product cannot be found.` });
-    })
-    .catch(next);
+// const productsService = require("./products.service");
+
+// function list(req, res, next) {
+//   productsService
+//     .list()
+//     .then((data) => res.json({ data }))
+//     .catch(next);
+// }
+
+// function productExists(req, res, next) {
+//   productsService
+//     .read(req.params.productId)
+//     .then((product) => {
+//       if (product) {
+//         res.locals.product = product;
+//         return next();
+//       }
+//       next({ status: 404, message: `Product cannot be found.` });
+//     })
+//     .catch(next);
+// }
+
+async function productExists(req, res, next) {
+  const product = await productsService.read(req.params.productId);
+
+  if (product) {
+    res.locals.product = product;
+    return next();
+  }
+  next({ status: 404, message: `Product cannot be found.` });
 }
 
 function read(req, res) {
@@ -36,6 +53,6 @@ function read(req, res) {
 }
 
 module.exports = {
-  read: [productExists, read],
-  list: [list],
+  read: [asyncErrorBoundary(productExists), read],
+  list: asyncErrorBoundary(list),
 };
