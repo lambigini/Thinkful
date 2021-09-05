@@ -2,10 +2,17 @@ const knex = require("../db/connection");
 
 function averageRating() {
   // your solution here
+  return knex("restaurants")
+    .avg("rating")
+    .then((result) => result[0]);
 }
 
 function count() {
   // your solution here
+  return knex("restaurants")
+    .count("restaurant_id")
+    .then((result) => result[0])
+    .then((result) => ({ count: Number(result.count) }));
 }
 
 function create(newRestaurant) {
@@ -28,6 +35,9 @@ function read(restaurant_id) {
 
 function readHighestRating() {
   // your solution here
+  return knex("restaurants")
+    .max("rating")
+    .then((result) => result[0]);
 }
 
 function update(updatedRestaurant) {
