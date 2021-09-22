@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the NoConstellationsMessage when no data appears 1`] = `
+<main>
+  <div
+    className="jumbotron jumbotron-fluid bg-info text-white rounded-0 mb-0"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="display-4"
+      >
+        I love Constellations
+      </h1>
+      <p
+        className="lead"
+      >
+        Explore different constellations in the sky!
+      </p>
+      <hr />
+      <form
+        className="form container"
+      >
+        <div
+          className="form-group row"
+        >
+          <input
+            className="form-control col col-md-8"
+            id="search"
+            name="search"
+            onChange={[Function]}
+            placeholder="Search the stars..."
+            type="text"
+          />
+          <label
+            className="form-check-label sr-only"
+            htmlFor="search"
+          >
+            Search
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+  <ul
+    className="nav justify-content-center bg-light py-2"
+  >
+    <li
+      className="nav-item"
+    >
+      <button
+        className="btn btn-link nav-link active"
+      >
+        Home
+      </button>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <button
+        className="btn btn-link nav-link"
+      >
+        About
+      </button>
+    </li>
+  </ul>
+  <div
+    className="container my-5"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <p
+          className="text-center"
+        >
+          There are no constellations listed...
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+`;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a constellation card when provided data 1`] = `
+<div
+  className="card col-12 col-md-4 rounded-0"
+>
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Crater
+       -
+       
+      <small
+        className="text-muted"
+      >
+        Cup
+      </small>
+    </h5>
+    <p
+      className="card-text"
+    >
+      <strong>
+        Stars with Planets: 
+      </strong>
+      10
+    </p>
+    <p
+      className="card-text"
+    >
+      <strong>
+        Quadrant: 
+      </strong>
+      SQ2
+    </p>
+  </div>
+</div>
+`;

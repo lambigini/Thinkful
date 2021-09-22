@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the header with a search bar 1`] = `
+<div
+  className="jumbotron jumbotron-fluid bg-info text-white rounded-0 mb-0"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="display-4"
+    >
+      I love Constellations
+    </h1>
+    <p
+      className="lead"
+    >
+      Explore different constellations in the sky!
+    </p>
+    <hr />
+    <form
+      className="form container"
+    >
+      <div
+        className="form-group row"
+      >
+        <input
+          className="form-control col col-md-8"
+          id="search"
+          name="search"
+          onChange={[Function]}
+          placeholder="Search the stars..."
+          type="text"
+        />
+        <label
+          className="form-check-label sr-only"
+          htmlFor="search"
+        >
+          Search
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
+`;

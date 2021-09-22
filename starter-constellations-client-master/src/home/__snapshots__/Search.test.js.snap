@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Search 1`] = `
+<form
+  className="form container"
+>
+  <div
+    className="form-group row"
+  >
+    <input
+      className="form-control col col-md-8"
+      id="search"
+      name="search"
+      onChange={[Function]}
+      placeholder="Search the stars..."
+      type="text"
+    />
+    <label
+      className="form-check-label sr-only"
+      htmlFor="search"
+    >
+      Search
+    </label>
+  </div>
+</form>
+`;

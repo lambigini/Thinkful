@@ -1,12 +1,9 @@
 const router = require("express").Router();
-const controller = require("./plants.controller");
+const controller = require("./cors-not-enabled.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
-const cors = require("cors");
-
-router.use(cors());
 
 router
-  .route("/:plantId")
+  .route("/:noCorsId")
   .get(controller.read)
   .put(controller.update)
   .delete(controller.delete)
