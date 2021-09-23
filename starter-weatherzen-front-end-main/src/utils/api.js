@@ -44,3 +44,30 @@ async function fetchJson(url, options) {
     }
   }
 }
+
+const observations = [];
+
+function nextId() {
+  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  return uint32.toString(16);
+}
+
+export async function createObservation(observation, signal) {
+  const url = `${API_BASE_URL}/observations`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: observation }),
+    signal,
+  };
+  return await fetchJson(url, options);
+}
+
+export async function listObservations(signal) {
+  const url = `${API_BASE_URL}/observations`;
+  const options = {
+    headers,
+    signal,
+  };
+  return await fetchJson(url, options);
+}
