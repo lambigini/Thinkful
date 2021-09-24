@@ -1,36 +1,36 @@
 {
   "folders": [
-    {
-      "path": "starter-front-end-foundations-main"
-    },
-    {
-      "path": "../starter-thinkfulbnb-main"
-    },
-    {
-      "path": "."
-    },
-    {
-      "path": "../getting-started-with-react"
-    },
-    {
-      "path": "../introduction-to-JSX"
-    },
-    {
-      "path": "../router-exercise-app-nested-routes"
-    },
-    {
-      "path": "../starter-constellations-client-master"
-    },
-    {
-      "path": "../starter-constellations-server-master"
-    },
-    {
-      "path": "../Projects-10M/Project_Flashcards_Qualified_1"
-    },
-    {
-      "path": "../Projects-10M"
-    }
-  ],
+	{
+		"path": "../../../../Google Drive/Coding/Github/Thinkful/starter-front-end-foundations-main"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/starter-thinkfulbnb-main"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/Thinkful"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/getting-started-with-react"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/introduction-to-JSX"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/router-exercise-app-nested-routes"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/starter-constellations-client-master"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/starter-constellations-server-master"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/Projects-10M/Project_Flashcards_Qualified_1"
+	},
+	{
+		"path": "../../../../Google Drive/Coding/Github/Projects-10M"
+	}
+],
   "settings": {
     "liveServer.settings.multiRootWorkspaceName": "getting-started-with-react"
   }
