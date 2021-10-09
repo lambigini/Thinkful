@@ -4,25 +4,25 @@ const app = express();
 
 app.use(express.json());
 
+const moviesRouter = require("./movies/movies.router");
+
 // Get all movies
 app.use("/movies", moviesRouter);
 app.use("/movies?is_showing=true", moviesRouter);
 
-// Read one movie
-app.use("/movies/:movieId", moviesRouter);
-app.use("/movies/:movieId/theaters", moviesRouter);
-app.use("/movies/:movieId/reviews", moviesRouter);
+// // Read one movie
+// app.use("/movies/:movieId", moviesRouter);
+// app.use("/movies/:movieId/theaters", moviesRouter);
+// app.use("/movies/:movieId/reviews", moviesRouter);
 
-// Destroy review
-app.use("/reviews/:reviewId", reviewRouter);
+// // Destroy review
+// app.use("/reviews/:reviewId", reviewRouter);
 
-// update review
+// // update review
+// app.use("/reviews/:reviewId", reviewRouter);
 
-app.use("/reviews/:reviewId", reviewRouter);
-
-// get all theaters
-
-app.use("theaters", theatersRouter);
+// // get all theaters
+// app.use("theaters", theatersRouter);
 
 // not found handler
 app.use((req, res, next) => {
