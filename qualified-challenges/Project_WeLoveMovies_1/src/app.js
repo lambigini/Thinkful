@@ -8,7 +8,7 @@ const moviesRouter = require("./movies/movies.router");
 
 // Get all movies
 app.use("/movies", moviesRouter);
-app.use("/movies?is_showing=true", moviesRouter);
+// app.use("/movies?is_showing=true", moviesRouter);
 
 // // Read one movie
 // app.use("/movies/:movieId", moviesRouter);
