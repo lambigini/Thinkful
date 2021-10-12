@@ -4,26 +4,20 @@ function list() {
   return knex("movies").select("*");
 }
 
-// function read(movieId) {
-//   // return knex("movies as m")
-//   //   .select("*")
-//   //   .where({
-//   //     movie_id: movieId,
-//   //   })
-//   //   .first();
-
-//   return knex("movies").select("*").where({ movie_id: movieId }).first();
-// }
-
-function read(id) {
+function listMoviesShowing() {
   return knex("movies")
-    .select("*")
-    .where({ movie_id: id })
-    .groupBy("movies.movie_id")
-    .first();
+    .join("movies_theaters", "movies.movie_id", "movies_theaters.movie_id")
+    .select("movies.*")
+    .where({ "movies_theaters.is_showing": true })
+    .groupBy("movies.movie_id");
+}
+
+function read(movieId) {
+  return knex("movies").select("*").where({ movie_id: movieId }).first();
 }
 
 module.exports = {
   list,
+  listMoviesShowing,
   read,
 };
