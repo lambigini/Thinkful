@@ -32,11 +32,24 @@ async function movieExist(req, res, next) {
 
 async function read(req, res, next) {
   const { movie: data } = res.locals;
-  console.log(data);
+
   res.json({ data });
+}
+
+async function listMovieShowAtTheater(req, res, next) {
+  // const data = await moviesService.listMovieShowAtTheater(req.params.movieId);
+  // console.log(data);
+  // res.json({ data });
+  const { movieId } = req.params;
+  const theaters = await moviesService.listMovieShowAtTheater(movieId);
+  res.json({ data: theaters });
 }
 
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExist), read],
+  listMovieShowAtTheater: [
+    asyncErrorBoundary(movieExist),
+    asyncErrorBoundary(listMovieShowAtTheater),
+  ],
 };
