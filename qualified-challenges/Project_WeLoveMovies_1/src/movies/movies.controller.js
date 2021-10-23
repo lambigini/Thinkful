@@ -37,12 +37,17 @@ async function read(req, res, next) {
 }
 
 async function listMovieShowAtTheater(req, res, next) {
-  // const data = await moviesService.listMovieShowAtTheater(req.params.movieId);
-  // console.log(data);
-  // res.json({ data });
   const { movieId } = req.params;
-  const theaters = await moviesService.listMovieShowAtTheater(movieId);
-  res.json({ data: theaters });
+  const data = await moviesService.listMovieShowAtTheater(movieId);
+  res.json({ data });
+}
+
+async function listReviews(req, res, next) {
+  const { movieId } = req.params;
+
+  const data = await moviesService.listReviews(movieId);
+  console.log(data);
+  res.json({ data });
 }
 
 module.exports = {
@@ -51,5 +56,9 @@ module.exports = {
   listMovieShowAtTheater: [
     asyncErrorBoundary(movieExist),
     asyncErrorBoundary(listMovieShowAtTheater),
+  ],
+  listReviews: [
+    asyncErrorBoundary(movieExist),
+    asyncErrorBoundary(listReviews),
   ],
 };

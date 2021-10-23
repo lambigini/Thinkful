@@ -1,4 +1,12 @@
 const knex = require("../db/connection");
+const mapProperties = require("../utils/map-properties");
+
+const addCritic = mapProperties({
+  critic_id: "critic.critic_id",
+  preferred_name: "critic.preferred_name",
+  surname: "critic.surname",
+  organization_name: "critic.organization_name",
+});
 
 function list() {
   return knex("movies").select("*");
@@ -23,9 +31,20 @@ function listMovieShowAtTheater(movieId) {
     .where({ movie_id: movieId, is_showing: true });
 }
 
+function listReviews(movieId) {
+  return knex("reviews as r")
+    .join("critics as c", "r.critic_id", "c.critic_id ")
+    .select("*")
+    .where({ movie_id: movieId })
+    .then((result) => {
+      return result.map((item) => addCritic(item));
+    });
+}
+
 module.exports = {
   list,
   listMoviesShowing,
   listMovieShowAtTheater,
   read,
+  listReviews,
 };
