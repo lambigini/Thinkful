@@ -5,18 +5,12 @@ const app = express();
 app.use(express.json());
 
 const moviesRouter = require("./movies/movies.router");
-
+const reviewRouter = require("./reviews/reviews.router");
 // Get all movies
 app.use("/movies", moviesRouter);
-// app.use("/movies?is_showing=true", moviesRouter);
 
-// // Read one movie
-// app.use("/movies/:movieId", moviesRouter);
-// app.use("/movies/:movieId/theaters", moviesRouter);
-// app.use("/movies/:movieId/reviews", moviesRouter);
-
-// // Destroy review
-// app.use("/reviews/:reviewId", reviewRouter);
+// Destroy review
+app.use("/reviews", reviewRouter);
 
 // // update review
 // app.use("/reviews/:reviewId", reviewRouter);
